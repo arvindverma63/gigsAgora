@@ -1,0 +1,57 @@
+.btn-outline-primary {
+    --bs-btn-color: #004b7d !important;
+}
+
+h6 {
+    color: #004b7d;
+}
+
+.form-check-label {
+    color: #004b7d;
+}
+
+.bi {
+    font-size: 20px !important;
+}
+
+.text-primary {
+    color: #004b7d !important;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.badge {
+    cursor: pointer;
+}
+
+.sponsered {
+    background: blueviolet;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: white;
+    font-weight: 500;
+}
+
+.bg-light-success {
+    background: rgb(154, 255, 154);
+}
+
+.level {
+    background: rgb(247, 140, 0);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: white;
+    font-weight: 500;
+}
+.btn-primary{
+    background: #004b7d;
+    border: none;
+}

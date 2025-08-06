@@ -3,6 +3,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <!-- Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 <style>
     body {
@@ -12,7 +14,7 @@
     }
 
     .navbar {
-        background: linear-gradient(to right, #1d9bf0, #007bff);
+        background: linear-gradient(to right, #004b7d, #007bff);
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
     }
@@ -38,7 +40,7 @@
     }
 
     .dropdown-header .avatar {
-        background-color: #0d6efd;
+        background-color: #004b7d;
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -80,12 +82,12 @@
     }
 
     .btn-avatar .avatar-icon {
-        background-color: #0d6efd;
+        background-color: #004b7d;
         width: 40px;
         height: 40px;
         border-radius: 50%;
         color: white;
-        font-weight: 600;
+        font-weight: 400;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -94,26 +96,25 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark px-3">
     <a class="navbar-brand d-flex align-items-center" href="#">
-        {{-- <img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker Logo"> --}}
-        <b>GigsAgora</b>
+        <img src="{{asset('dashboard-css/img/logo/logo-trans.png')}}" style="height: 50px;" alt="Docker Logo">
+        {{-- <b>GigsAgora</b> --}}
     </a>
     <div class="ms-auto d-flex align-items-center">
 
-        <!-- Help Icon -->
-        <i class="bi bi-question-circle nav-icon" title="Help"></i>
+
 
         <!-- Notification Icon -->
         <i class="bi bi-bell nav-icon" title="Notifications"></i>
 
         <!-- Theme Toggle Icon -->
-        <i class="bi bi-brightness-high nav-icon" title="Toggle Theme"></i>
+        <i class="bi bi-chat-right-dots nav-icon" title="Toggle Theme"></i>
 
         <!-- Dropdown Avatar -->
         <div class="dropdown">
             <button class="btn btn-avatar" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="avatar-icon">A</div>
             </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownMenuButton">
+            <ul class="dropdown-menu dropdown-menu-end shadow" style="z-index: 1000;" aria-labelledby="dropdownMenuButton">
                 <div class="dropdown-header">
                     <div class="avatar">A</div>
                     <div class="mt-2">arvind63</div>
@@ -130,4 +131,5 @@
         </div>
     </div>
 </nav>
+@include('freelancer.partials.left-sidebar')
 @include('freelancer.partials.sidenav')
