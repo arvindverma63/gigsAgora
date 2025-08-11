@@ -71,15 +71,15 @@
 
 <!-- Left Sidebar -->
 <div class="left-sidebar">
-    <!-- Search -->
-
     <!-- Close Button (mobile only) -->
     <button class="btn btn-light btn-sm close-sidebar d-md-none">
         <i class="fas fa-times"></i>
     </button>
-    <div class="mb-3">
+
+    <!-- Search -->
+    <div class="mb-3 mt-2">
         <h6><i class="fas fa-magnifying-glass me-1"></i> Search</h6>
-        <input type="text" class="form-control form-control-sm" placeholder="Search jobs...">
+        <input type="text" class="form-control form-control-sm" placeholder="Search Freelancers...">
     </div>
 
     <!-- Categories as Pills -->
@@ -126,29 +126,37 @@
         </div>
     </div>
 
+    <!-- Locations -->
+    <div class="mb-3">
+        <h6><i class="fas fa-location"></i> Location</h6>
+        <input type="number" class="form-control form-control-sm" placeholder="Kanpur Nagar, U.P">
+    </div>
+
     <!-- Budget Slider -->
     <div class="mb-3">
-        <h6><i class="fas fa-dollar-sign me-1"></i>Budget Min</h6>
+        <h6><i class="fas fa-dollar-sign me-1"></i> Budget Min</h6>
         <input type="number" class="form-control form-control-sm" placeholder="Budget Min">
     </div>
+
     <!-- Budget Slider -->
     <div class="mb-3">
-        <h6><i class="fas fa-dollar-sign me-1"></i>Budget Max</h6>
+        <h6><i class="fas fa-dollar-sign me-1"></i> Budget Max</h6>
         <input type="number" class="form-control form-control-sm" placeholder="Budget Max">
     </div>
 </div>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const sidebar = document.querySelector(".left-sidebar");
-        const toggleBtn = document.querySelector("#sidebarToggle");
-        const closeBtn = document.querySelector(".close-sidebar");
+document.addEventListener("DOMContentLoaded", function() {
+    const sidebar = document.querySelector(".left-sidebar");
+    const toggleBtn = document.querySelector("#sidebarToggle");
+    const closeBtn = document.querySelector(".close-sidebar");
 
-        toggleBtn.addEventListener("click", function() {
-            sidebar.classList.toggle("active");
-        });
-
-        closeBtn.addEventListener("click", function() {
-            sidebar.classList.remove("active");
-        });
+    toggleBtn.addEventListener("click", function() {
+        sidebar.classList.toggle("active");
     });
+
+    closeBtn.addEventListener("click", function() {
+        sidebar.classList.remove("active");
+    });
+});
 </script>

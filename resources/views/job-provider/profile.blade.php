@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-@include('job-provider.partials.head')
-
-<body>
-    @include('job-provider.partials.navbar')
-
-
-
  <style>
         .container{
             max-width: 1200px;
@@ -74,11 +65,3 @@
             </div>
         </div>
     </div>
-
-
-
-
-</body>
-@include('job-provider.partials.js')
-
-</html>

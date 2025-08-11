@@ -95,29 +95,30 @@
 <button id="rightSidebarToggle" class="btn btn-primary d-md-none mb-2">
     <i class="fas fa-user"></i> Profile
 </button>
+
+<!-- Right Sidebar -->
 <div class="sidebar d-flex flex-column">
-    <!-- Profile Section -->
     <!-- Close Button (mobile only) -->
     <button class="btn btn-light btn-sm close-sidebar d-md-none">
         <i class="fas fa-times"></i>
     </button>
-    <div class="d-flex align-items-center mb-2">
+
+    <!-- Profile Section -->
+    <div class="d-flex align-items-center mb-2 mt-2">
         <div class="avatar me-2">AV</div>
         <div class="flex-grow-1">
             <div class="fw-bold" style="font-size: 13px; color: #004b7d;">ARVIND Verma</div>
-            <small class="text-muted" style="font-size: 11px; color: #004b7d;">Freelancer</small>
+            <small class="text-muted" style="font-size: 11px; color: #004b7d;">Job Provider</small>
         </div>
         <i class="bi bi-chevron-down" style="font-size: 12px;"></i>
     </div>
 
     <ul class="nav flex-column">
-
-
         <!-- Profile Completion -->
         <li class="nav-item mt-2">
             <div class="d-flex justify-content-between align-items-center mb-1">
                 <span class="fw-semibold" style="font-size: 13px; color: #004b7d;">Profile Completion</span>
-                <a href="#" class="text-primary" style="font-size: 11px;">Complete </a>
+                <a href="#" class="text-primary" style="font-size: 11px;">Complete</a>
             </div>
             <div class="progress" style="height: 6px;">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 70%;" aria-valuenow="70"
@@ -157,29 +158,7 @@
         </li>
 
         <div class="section-divider"></div>
-
-        <!-- Settings -->
-        <li class="nav-item">
-            {{-- <a class="side-label d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-                href="#settingsMenu">
-                <span><i class="bi bi-gear me-2"></i> Settings</span>
-                <i class="bi bi-chevron-down small"></i>
-            </a> --}}
-            <div class="collapse" id="settingsMenu">
-                <ul class="nav flex-column ms-3">
-                    <li class="nav-item"><a class="side-label" href="#">Preferences</a></li>
-                    <li class="nav-item"><a class="side-label" href="#">Integrations</a></li>
-                </ul>
-            </div>
-        </li>
-
-        <li class="nav-item">
-            <a class="side-label d-flex align-items-center" href="#" target="_blank">
-
-            </a>
-        </li>
     </ul>
-
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
