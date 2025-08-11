@@ -1,0 +1,146 @@
+.wizard-step {
+    display: none;
+}
+
+.wizard-step.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.progress-bar {
+    height: 6px;
+    border-radius: 3px;
+    transition: width 0.3s ease-in-out;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 75, 125, 0.1);
+    border-radius: 8px;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+}
+
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #004b7d;
+}
+
+.form-control, .form-select {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #004b7d;
+    box-shadow: 0 0 0 0.2rem rgba(0, 75, 125, 0.25);
+}
+
+.form-check-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #004b7d;
+}
+
+.btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: #004b7d;
+    border-color: #004b7d;
+}
+
+.btn-primary:hover {
+    background-color: #00385e;
+    border-color: #00385e;
+}
+
+.btn-outline-primary {
+    color: #004b7d;
+    border-color: #004b7d;
+}
+
+.btn-outline-primary:hover {
+    background-color: #004b7d;
+    color: white;
+}
+
+.milestone-item {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.input-group-text {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+    color: #004b7d;
+}
+
+.input-group > .form-control {
+    border-left: none;
+}
+
+.review-section {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-left: 4px solid #004b7d;
+}
+
+.review-section h6 {
+    color: #004b7d;
+    font-weight: 600;
+}
+
+.review-item {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+}
+
+body {
+    background: linear-gradient(to right, #f0f4f8, #e0e7ef);
+}
+
+.container {
+    max-width: 900px;
+}
+
+.alert {
+    font-size: 0.9rem;
+    border-radius: 5px;
+}
+
+.invalid-feedback {
+    font-size: 0.8rem;
+}
+
+.form-control.is-invalid, .form-select.is-invalid {
+    border-color: #dc3545;
+}
+
+.badge {
+    font-size: 0.85rem;
+    padding: 0.4em 0.8em;
+    border-radius: 12px;
+}

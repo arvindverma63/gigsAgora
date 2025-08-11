@@ -39,38 +39,46 @@ class JobProviderController extends Controller
     {
         $authData = Session::get('auth_data');
         if (!$authData || !$authData['userid']) {
-            Log::error('Unauthorized access to create job offer', ['userId' => $authData['userid'] ?? 'N/A', 'timestamp' => now()->timezone('Asia/Kolkata')->format('Y-m-d H:i:s')]);
             return redirect()->route('auth.form')->withErrors(['message' => 'Please login to create a job offer']);
         }
 
-        Log::info('Validating job offer creation', ['userId' => $authData['userid'], 'timestamp' => now()->timezone('Asia/Kolkata')->format('Y-m-d H:i:s')]);
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'amount' => 'required|numeric',
-            'milestones' => 'array',
-            'milestones.*.title' => 'required_with:milestones|string',
-            'milestones.*.description' => 'required_with:milestones|string',
-            'milestones.*.amount' => 'required_with:milestones|numeric',
             'experienceLevel' => 'required|integer',
             'jobType' => 'required|integer',
-            'duration' => 'required|integer'
+            'jobOfferDuration' => 'required|integer',
+            'minimumSuccessScore' => 'required|integer',
+            'minimumEarningScore' => 'required|integer',
+            'requiredTalentType' => 'required|integer',
+            'languages' => 'required|string',
+            'countries' => 'required|string',
+            'skillsRequired' => 'required|array',
+            'isSponsored' => 'boolean',
+            'isHighlighted' => 'boolean',
+            'isFeatured' => 'boolean'
         ]);
 
         $data = $request->all();
-        $data['userId'] = $authData['userid'];
+        $data['offerDate'] = now()->toISOString();
 
-        Log::info('Creating job offer', ['userId' => $authData['userid'], 'data' => $data, 'timestamp' => now()->timezone('Asia/Kolkata')->format('Y-m-d H:i:s')]);
-        $response = Http::withToken($authData['token'])->post("{$this->apiBaseUrl}/CreateJobOffer", $data);
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json-patch+json'
+        ])->withToken($authData['token'])->post(
+                "{$this->apiBaseUrl}/CreateJobOffer",
+                $data
+            );
+
+        Log::info('Job Creation ',['response'=>$response]);
 
         if ($response->ok()) {
-            Log::info('Job offer created successfully', ['userId' => $authData['userid'], 'response' => $response->json(), 'timestamp' => now()->timezone('Asia/Kolkata')->format('Y-m-d H:i:s')]);
             return redirect()->route('job-provider.dashboard')->with('success', 'Job offer created successfully');
         }
 
-        Log::error('Failed to create job offer', ['userId' => $authData['userid'], 'status' => $response->status(), 'timestamp' => now()->timezone('Asia/Kolkata')->format('Y-m-d H:i:s')]);
         return back()->withErrors(['message' => 'Failed to create job offer'])->withInput();
     }
+
 
     public function getJobProposals()
     {

@@ -17,6 +17,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\FreelancerPageController;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\JobProviderController;
 use App\Http\Controllers\WebsitePageController;
 
@@ -53,3 +54,4 @@ Route::controller(WebsitePageController::class)->group(function () {
 });
 
 Route::get('/dashboard',[FreelancerPageController::class,'dashboard'])->name('freelancer.dashboard');
+Route::get('/job-post',[JobPostController::class,'index']);

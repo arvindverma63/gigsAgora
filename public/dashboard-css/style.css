@@ -3,9 +3,14 @@
 }
 
 h6 {
-    color: #004b7d;
+    color: #004b7d !important;
 }
-
+h5 {
+    color: #004b7d !important;
+}
+h4 {
+    color: #004b7d !important;
+}
 .form-check-label {
     color: #004b7d;
 }
