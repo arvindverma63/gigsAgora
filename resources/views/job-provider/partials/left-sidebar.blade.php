@@ -134,29 +134,92 @@
 
     <!-- Budget Slider -->
     <div class="mb-3">
-        <h6><i class="fas fa-dollar-sign me-1"></i> Budget Min</h6>
-        <input type="number" class="form-control form-control-sm" placeholder="Budget Min">
+        <h6><i class="fas fa-dollar-sign me-1"></i> Hourly Rate</h6>
+        <input type="number" class="form-control form-control-sm" placeholder="Hourly Rate">
     </div>
 
-    <!-- Budget Slider -->
+
     <div class="mb-3">
-        <h6><i class="fas fa-dollar-sign me-1"></i> Budget Max</h6>
-        <input type="number" class="form-control form-control-sm" placeholder="Budget Max">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <h6><i class="fa-regular fa-circle-check"></i> Job Success</h6>
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="fixed">
+                            <label class="form-check-label" for="fixed">Any Job Success</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="hourly">
+                            <label class="form-check-label" for="hourly">Up to 80%</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="hourly">
+                            <label class="form-check-label" for="hourly">Up to 90%</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <div class="mb-3">
+        <div class="accordion accordion-flush" id="accordionFlushExample1">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <h6><i class="fa-regular fa-circle-check"></i> Earned Upto</h6>
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="fixed">
+                            <label class="form-check-label" for="fixed">Any Ammount Earned</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="hourly">
+                            <label class="form-check-label" for="hourly">1$ + Earned</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="hourly">
+                            <label class="form-check-label" for="hourly">100$ + Earned</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="hourly">
+                            <label class="form-check-label" for="hourly">1K$ + Earned</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="hourly">
+                            <label class="form-check-label" for="hourly">10K$ + Earned</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const sidebar = document.querySelector(".left-sidebar");
-    const toggleBtn = document.querySelector("#sidebarToggle");
-    const closeBtn = document.querySelector(".close-sidebar");
+    document.addEventListener("DOMContentLoaded", function() {
+        const sidebar = document.querySelector(".left-sidebar");
+        const toggleBtn = document.querySelector("#sidebarToggle");
+        const closeBtn = document.querySelector(".close-sidebar");
 
-    toggleBtn.addEventListener("click", function() {
-        sidebar.classList.toggle("active");
-    });
+        toggleBtn.addEventListener("click", function() {
+            sidebar.classList.toggle("active");
+        });
 
-    closeBtn.addEventListener("click", function() {
-        sidebar.classList.remove("active");
+        closeBtn.addEventListener("click", function() {
+            sidebar.classList.remove("active");
+        });
     });
-});
 </script>

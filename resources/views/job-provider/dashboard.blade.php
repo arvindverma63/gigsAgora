@@ -11,6 +11,9 @@
         .container{
             max-width: 1200px;
         }
+        .card:hover{
+            background: rgba(192, 192, 192, 0.432);
+        }
     </style>
     <div class="container my-4">
         <div class="card p-3 shadow-sm">
