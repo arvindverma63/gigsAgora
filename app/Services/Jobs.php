@@ -24,4 +24,10 @@ class Jobs
 
         return $response->json();
     }
+    public function getJobById($id){
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer '.$this->authData['token'],
+        ])->get($this->baseUrl.'api/Freelancer/GetJobOffer?jobId='.$id);
+        return $response->json();
+    }
 }

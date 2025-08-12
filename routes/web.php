@@ -19,6 +19,7 @@ use App\Http\Controllers\FreelancerPageController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\JobProviderController;
+use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\WebsitePageController;
 
 Route::get('/auth', [AuthController::class, 'showAuthForm'])->name('auth.form');
@@ -55,3 +56,5 @@ Route::controller(WebsitePageController::class)->group(function () {
 
 Route::get('/dashboard',[FreelancerPageController::class,'dashboard'])->name('freelancer.dashboard');
 Route::get('/job-post',[JobPostController::class,'index']);
+Route::get('/job-view/{id}',[FreelancerPageController::class,'jobView'])->name('job.view');
+Route::post('/create-proposal',[ProposalController::class,'create'])->name('create.proposal');

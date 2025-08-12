@@ -226,5 +226,11 @@
         </div>
     </div>
 </nav>
+@if (Route::is('job.view'))
+
+@else
+
 @include('freelancer.partials.left-sidebar')
 @include('freelancer.partials.sidenav')
+
+@endif
