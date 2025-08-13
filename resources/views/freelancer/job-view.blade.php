@@ -537,18 +537,26 @@
 
         function addPortfolio() {
             const portfolioContainer = document.getElementById('portfolioContainer');
-            const portfolios = portfolioContainer.getElementsByClassName('portfolio-item').length;
+            const index = portfolioContainer.getElementsByClassName('portfolio-item').length;
+
             const portfolioRow = document.createElement('div');
             portfolioRow.className = 'portfolio-item mb-2';
             portfolioRow.innerHTML = `
-            <div class="input-group">
-                <input type="text" class="form-control" name="portfolios[]" placeholder="Enter portfolio URL" required style="border-color: #e0e0e0; font-size: 0.95rem; padding: 8px;">
-                <button type="button" class="btn btn-outline-danger btn-sm remove-portfolio" style="border-color: #dc3545; color: #dc3545; font-size: 0.9rem; padding: 4px 10px;">Remove</button>
-            </div>
-        `;
+        <div class="input-group">
+            <input type="hidden" name="portfolios[${index}][id]" value="0">
+            <input type="hidden" name="portfolios[${index}][jobProposalId]" value="0">
+            <input type="hidden" name="portfolios[${index}][freelancerId]" value="0">
+            <input type="text" class="form-control" name="portfolios[${index}][url]" placeholder="Enter portfolio URL" required style="border-color: #e0e0e0; font-size: 0.95rem; padding: 8px;">
+            <button type="button" class="btn btn-outline-danger btn-sm remove-portfolio" style="border-color: #dc3545; color: #dc3545; font-size: 0.9rem; padding: 4px 10px;">Remove</button>
+        </div>
+    `;
+
             portfolioContainer.appendChild(portfolioRow);
+
+            // Remove button
             portfolioRow.querySelector('.remove-portfolio').addEventListener('click', () => portfolioRow.remove());
         }
+
 
         // Initial setup
         togglePayType();

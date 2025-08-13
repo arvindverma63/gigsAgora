@@ -58,3 +58,6 @@ Route::get('/dashboard',[FreelancerPageController::class,'dashboard'])->name('fr
 Route::get('/job-post',[JobPostController::class,'index']);
 Route::get('/job-view/{id}',[FreelancerPageController::class,'jobView'])->name('job.view');
 Route::post('/create-proposal',[ProposalController::class,'create'])->name('create.proposal');
+
+
+Route::get('/view-proposals/{id}',[JobProviderController::class,'viewProposals'])->name('view.proposals');

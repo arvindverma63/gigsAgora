@@ -1,10 +1,11 @@
 <!-- Offcanvas -->
-<div class="offcanvas offcanvas-end shadow-sm" tabindex="-1" id="jobDetails" aria-labelledby="jobDetailsLabel" style="width: 900px; z-index: 100000; background-color: #ffffff;">
+<div class="offcanvas offcanvas-end shadow-sm" tabindex="-1" id="{{ $offcanvasId }}" aria-labelledby="jobDetailsLabel" style="width: 900px; z-index: 100000; background-color: #ffffff;">
   <div class="offcanvas-header border-bottom py-3 px-4 align-items-center">
     <button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="offcanvas" aria-label="Close" style="color: #004b7d !important;"
             onmouseenter="this.style.opacity='0.8'" onmouseleave="this.style.opacity='1'">
       <i class="bi bi-arrow-left fs-4"></i>
     </button>
+
     <h5 class="offcanvas-title mx-auto fw-bold" id="jobDetailsLabel" style="color: #004b7d !important;">
       {{ $d['title'] }}
     </h5>

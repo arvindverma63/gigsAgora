@@ -13,9 +13,12 @@ class ProposalController extends Controller
     {
         $authData = Session::get('auth_data');
         if (!$authData || !$authData['userid']) {
-            return redirect()->route('auth.form')->withErrors(['message' => 'Please login to create a job offer']);
+            return redirect()->route('auth.form')
+                ->withErrors(['message' => 'Please login to create a job offer']);
         }
+
         $baseUrl = env('API_BASE_URL');
+
         // Validate request data
         $validated = $request->validate([
             'jobOfferId' => 'required|integer',
@@ -28,11 +31,26 @@ class ProposalController extends Controller
             'portfolios' => 'required|array',
             'jobOfferDuration' => 'required|integer',
             'coverLetter' => 'required|string',
-            'isSponsored' => 'required|boolean',
-            'isHighlighted' => 'required|boolean',
-            'isFeatured' => 'required|boolean',
-            'isSealed' => 'required|boolean',
+            'isSponsored' => 'nullable|boolean',
+            'isHighlighted' => 'nullable|boolean',
+            'isFeatured' => 'nullable|boolean',
+            'isSealed' => 'nullable|boolean',
         ]);
+
+        // Convert checkbox fields to actual booleans (default false if missing)
+        foreach (['isSponsored', 'isHighlighted', 'isFeatured', 'isSealed'] as $field) {
+            $validated[$field] = $request->boolean($field);
+        }
+
+        // Transform portfolios to match API model
+        $validated['portfolios'] = array_map(function ($url) {
+            return [
+                "portfolioUrl" => $url,
+                // add any default fields the API might expect
+                "description" => null,
+                "title" => null
+            ];
+        }, $validated['portfolios']);
 
         try {
             $response = Http::withHeaders([
@@ -63,4 +81,6 @@ class ProposalController extends Controller
             ], 500);
         }
     }
+
+
 }

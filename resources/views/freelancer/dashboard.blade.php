@@ -8,9 +8,8 @@
     <div class="main" style="padding-top: 60px;">
         <div class="container my-4 job-container mt-4">
             @foreach ($data as $d)
-
-                @include('freelancer.components.job-offcanvas')
-                <div class="card p-3 shadow-sm" data-bs-toggle="offcanvas" data-bs-target="#jobDetails" aria-controls="jobDetails">
+                <div class="card p-3 shadow-sm" data-bs-toggle="offcanvas" data-bs-target="#jobDetails{{ $d['id'] }}"
+                    aria-controls="jobDetails{{ $d['id'] }}">
                     <div class="row">
                         <!-- Left Column: Title & Description -->
                         <div class="col-md-9">
@@ -72,6 +71,9 @@
                         </div>
                     </div>
                 </div>
+
+
+                @include('freelancer.components.job-offcanvas', ['offcanvasId' => 'jobDetails' . $d['id']])
             @endforeach
 
         </div>

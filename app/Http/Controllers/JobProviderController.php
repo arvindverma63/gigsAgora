@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Proposals;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
@@ -125,5 +126,11 @@ class JobProviderController extends Controller
 
         Log::error('Failed to accept job proposal', ['userId' => $authData['userid'], 'proposalId' => $id, 'status' => $response->status(), 'timestamp' => now()->timezone('Asia/Kolkata')->format('Y-m-d H:i:s')]);
         return redirect()->route('job-provider.job-proposals')->withErrors(['message' => 'Failed to accept job proposal']);
+    }
+
+    public function viewProposals(Proposals $proposals,$id){
+        $response = $proposals->getAllProposal($id);
+        dd($response);
+        return view('job-provider.view-proposals',['data'=>$response]);
     }
 }
