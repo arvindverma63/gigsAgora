@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Jobs;
 use App\Services\Proposals;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -130,7 +131,14 @@ class JobProviderController extends Controller
 
     public function viewProposals(Proposals $proposals,$id){
         $response = $proposals->getAllProposal($id);
-        dd($response);
         return view('job-provider.view-proposals',['data'=>$response]);
+    }
+    public function myJobs(Jobs $jobs){
+        return view('job-provider.my-jobs',['data'=>$jobs->myJobOffers()]);
+    }
+
+    public function acceptJob(Proposals $job,$id){
+        $response = $job->acceptProposal($id);
+        return response()->json($response);
     }
 }

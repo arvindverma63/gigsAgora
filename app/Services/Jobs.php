@@ -30,4 +30,11 @@ class Jobs
         ])->get($this->baseUrl.'api/Freelancer/GetJobOffer?jobId='.$id);
         return $response->json();
     }
+
+    public function myJobOffers(){
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer '.$this->authData['token'],
+        ])->get($this->baseUrl.'api/JobProvider/GetAllJobOffers');
+        return $response->json();
+    }
 }
