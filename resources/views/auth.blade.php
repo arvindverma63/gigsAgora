@@ -96,7 +96,7 @@
                         if (data.data.role === "JobProvider") {
                             window.location.href = "/job-provider/dashboard";
                         }
-                        if(data.status === "Error"){
+                        if(data.data.status === "Error"){
                             window.location.href = "/registerType";
                         }
                         alert(data.message || "Login successful!");
