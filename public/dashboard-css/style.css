@@ -66,3 +66,6 @@ h4 {
 .card{
     cursor: pointer;
 }
+.sidebar{
+    z-index: 10 !important;
+}

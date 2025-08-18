@@ -64,3 +64,4 @@ Route::get('/view-proposals/{id}',[JobProviderController::class,'viewProposals']
 Route::get('/job-provider/my-jobs',[JobProviderController::class,'myJobs'])->name('myjobs');
 Route::get('/acceptJobOffer/{id}',[JobProviderController::class,'acceptJob']);
 Route::get('/register/{id}',[AuthController::class,'registerPage']);
+Route::get('/auth/logout',[AuthController::class,'logout'])->name('logout');

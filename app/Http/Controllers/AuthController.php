@@ -186,4 +186,9 @@ class AuthController extends Controller
         return view('register', ['role' => $id]);
     }
 
+    public function logout()
+    {
+        Session::flush();     // Clears all session data
+        return redirect()->route('auth.login'); // Or return view('auth') if that's your login page
+    }
 }
