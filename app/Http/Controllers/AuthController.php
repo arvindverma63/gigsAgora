@@ -42,10 +42,10 @@ class AuthController extends Controller
                 'twoFactorEnabled' => $data['twoFactorEnabled']
             ]);
 
-            if($data['role'] == 'Freelancer'){
+            if ($data['role'] == 'Freelancer') {
                 return redirect()->route('freelancer.dashboard');
             }
-            if($data['role'] == 'JobProvider'){
+            if ($data['role'] == 'JobProvider') {
                 return redirect()->route('job-provider.dashboard');
             }
 
@@ -61,7 +61,7 @@ class AuthController extends Controller
             'username' => 'required|string|max:255|unique:users,username',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
-            'userRole' => 'required|integer|in:1,2' // Assuming 1=Admin, 2=User
+            'userRole' => 'required|integer|in:1,2' // 1=Freelancer, 2=Job Seeker
         ]);
 
         $response = Http::post("{$this->apiBaseUrl}/register", [
@@ -72,11 +72,13 @@ class AuthController extends Controller
         ]);
 
         if ($response->ok()) {
-            return redirect()->route('auth.form')->with('success', 'Registration successful. Please check your email to confirm.');
+            return redirect()->route('auth.form')
+                ->with('success', 'Registration successful. Please check your email to confirm.');
         }
 
         return back()->withErrors(['username' => 'Registration failed'])->withInput();
     }
+
 
     public function changePassword(Request $request)
     {
@@ -174,12 +176,14 @@ class AuthController extends Controller
         return redirect()->route('auth.form')->withErrors(['email' => 'Email confirmation failed']);
     }
 
-    public function registerType(){
+    public function registerType()
+    {
         return view('register-type');
     }
 
-    public function registerPage(){
-        return view('register');
+    public function registerPage($id)
+    {
+        return view('register', ['role' => $id]);
     }
 
 }
