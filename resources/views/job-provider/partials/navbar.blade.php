@@ -223,7 +223,7 @@
                 <ul class="dropdown-menu dropdown-menu-end shadow" style="z-index: 10000;" aria-labelledby="dropdownMenuButton">
                     <div class="dropdown-header">
                         <div class="avatar">A</div>
-                        <div class="mt-2">arvind63</div>
+                        <div class="mt-2">{{Session::get('auth_data')['username']}}</div>
                     </div>
                     <li><a class="dropdown-item" href="#">What's new</a></li>
                     <li><a class="dropdown-item" href="#">My profile</a></li>

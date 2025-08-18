@@ -107,7 +107,7 @@
     <div class="d-flex align-items-center mb-2 mt-2">
         <div class="avatar me-2">AV</div>
         <div class="flex-grow-1">
-            <div class="fw-bold" style="font-size: 13px; color: #004b7d;">ARVIND Verma</div>
+            <div class="fw-bold" style="font-size: 13px; color: #004b7d;">{{Session::get('auth_data')['username']}}</div>
             <small class="text-muted" style="font-size: 11px; color: #004b7d;">Job Provider</small>
         </div>
         <i class="bi bi-chevron-down" style="font-size: 12px;"></i>
