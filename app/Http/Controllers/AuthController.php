@@ -189,6 +189,6 @@ class AuthController extends Controller
     public function logout()
     {
         Session::flush();     // Clears all session data
-        return redirect()->route('auth.login'); // Or return view('auth') if that's your login page
+        return redirect()->route('auth.form'); // Or return view('auth') if that's your login page
     }
 }
