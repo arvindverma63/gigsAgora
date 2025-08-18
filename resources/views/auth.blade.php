@@ -99,7 +99,6 @@
                         if(data.data.status === "Error"){
                             window.location.href = "/registerType";
                         }
-                        alert(data.message || "Login successful!");
                     } else {
                         const text = await res.text();
                         console.error("Non-JSON response:", text);
