@@ -90,6 +90,15 @@
                     if (contentType && contentType.indexOf("application/json") !== -1) {
                         const data = await res.json();
                         console.log(data);
+                        if (data.data.role === "Freelancer") {
+                            window.location.href = "/dashboard";
+                        }
+                        if (data.data.role === "JobProvider") {
+                            window.location.href = "/job-provider/dashboard";
+                        }
+                        if(data.status === "Error"){
+                            window.location.href = "/registerType";
+                        }
                         alert(data.message || "Login successful!");
                     } else {
                         const text = await res.text();

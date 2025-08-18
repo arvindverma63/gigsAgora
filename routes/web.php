@@ -63,3 +63,4 @@ Route::post('/create-proposal',[ProposalController::class,'create'])->name('crea
 Route::get('/view-proposals/{id}',[JobProviderController::class,'viewProposals'])->name('view.proposals');
 Route::get('/job-provider/my-jobs',[JobProviderController::class,'myJobs'])->name('myjobs');
 Route::get('/acceptJobOffer/{id}',[JobProviderController::class,'acceptJob']);
+Route::get('/register',[AuthController::class,'registerPage']);

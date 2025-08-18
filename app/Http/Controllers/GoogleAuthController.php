@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 
 class GoogleAuthController extends Controller
 {
@@ -24,18 +25,34 @@ class GoogleAuthController extends Controller
 
         $baseUrl = env('API_BASE_URL');
         $googleUser = $googleResponse->json();
-        if($googleUser){
-            $response = Http::post($baseUrl."api/Authenticate/externallogin",[
-                'idtoken'=>$token,
-                'provider'=>'google',
-                'userRole' => 1,
+        if ($googleUser) {
+            $response = Http::post($baseUrl . "api/Authenticate/externallogin", [
+                'idtoken' => $token,
+                'provider' => 'google',
+                'userRole' => 0,
             ]);
 
-            if($response){
+            if ($response->successful()) {
+                Session::put('auth_data', [
+                    'token' => $response['token'],
+                    'expiration' => $response['expiration'],
+                    'username' => $response['username'],
+                    'userid' => $response['userid'],
+                    'role' => $response['role'],
+                    'fullname' => $response['fullname'],
+                    'email' => $response['email'],
+                    'emailConfirmed' => $response['emailConfirmed'],
+                    'phone' => $response['phone'],
+                    'phoneConfirmed' => $response['phoneConfirmed'],
+                    'twoFactorEnabled' => $response['twoFactorEnabled']
+                ]);
+            }
+
+            if ($response) {
                 return response()->json([
-                    'data'=>$response->json(),
-                    'userData'=>$googleResponse->json()
-                ],200);
+                    'data' => $response->json(),
+                    'userData' => $googleResponse->json()
+                ], 200);
             }
         }
     }

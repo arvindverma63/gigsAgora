@@ -177,4 +177,9 @@ class AuthController extends Controller
     public function registerType(){
         return view('register-type');
     }
+
+    public function registerPage(){
+        return view('register');
+    }
+
 }
