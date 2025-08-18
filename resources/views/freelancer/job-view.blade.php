@@ -157,10 +157,10 @@
                     <a class="nav-link active" id="details-tab" data-bs-toggle="tab" href="#details"
                         style="color: #004b7d !important;">Details</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" id="proposals-tab" data-bs-toggle="tab" href="#proposals"
                         style="color: #004b7d !important;">Proposals</a>
-                </li>
+                </li> --}}
             </ul>
 
             <div class="tab-content" id="myTabContent">
@@ -247,38 +247,6 @@
                     </div>
                 </div>
 
-                <!-- Proposals Tab -->
-                <div class="tab-pane fade" id="proposals">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="proposal-card">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="mb-1 text-dark">Proposal by John Doe</h6>
-                                        <p class="text-muted-custom mb-1">Bid: ₹1,000 INR / hour</p>
-                                        <p class="text-muted-custom mb-0">Submitted: 12/08/2025 01:05 PM IST</p>
-                                    </div>
-                                    <button class="btn btn-custom btn-sm">View Details</button>
-                                </div>
-                                <p class="mt-2 text-dark">I am an experienced AI developer with expertise in computer
-                                    vision and deep learning. I propose to use TensorFlow for this project and ensure
-                                    real-time detection capabilities.</p>
-                            </div>
-                            <div class="proposal-card">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="mb-1 text-dark">Proposal by Jane Smith</h6>
-                                        <p class="text-muted-custom mb-1">Bid: ₹1,200 INR / hour</p>
-                                        <p class="text-muted-custom mb-0">Submitted: 12/08/2025 12:45 PM IST</p>
-                                    </div>
-                                    <button class="btn btn-custom btn-sm">View Details</button>
-                                </div>
-                                <p class="mt-2 text-dark">With a strong background in PyTorch and model deployment, I
-                                    can deliver a high-quality object detection app within the timeline.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
