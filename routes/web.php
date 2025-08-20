@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommonController;
 use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\FreelancerPageController;
 use App\Http\Controllers\GoogleAuthController;
@@ -65,3 +66,6 @@ Route::get('/job-provider/my-jobs',[JobProviderController::class,'myJobs'])->nam
 Route::get('/acceptJobOffer/{id}',[JobProviderController::class,'acceptJob']);
 Route::get('/register/{id}',[AuthController::class,'registerPage']);
 Route::get('/auth/logout',[AuthController::class,'logout'])->name('logout');
+Route::post('/favorite/{jobId}/{add}', [CommonController::class, 'addFav'])
+    ->whereNumber('jobId')
+    ->where('add', '^(true|false|1|0)$');

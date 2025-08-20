@@ -8,11 +8,11 @@
     <div class="main" style="padding-top: 60px;">
         <div class="container my-4 job-container mt-4">
             @foreach ($data as $d)
-                <div class="card p-3 shadow-sm" data-bs-toggle="offcanvas" data-bs-target="#jobDetails{{ $d['id'] }}"
-                    aria-controls="jobDetails{{ $d['id'] }}">
+                <div class="card p-3 shadow-sm">
                     <div class="row">
                         <!-- Left Column: Title & Description -->
-                        <div class="col-md-9">
+                        <div class="col-md-9" data-bs-toggle="offcanvas" data-bs-target="#jobDetails{{ $d['id'] }}"
+                            aria-controls="jobDetails{{ $d['id'] }}">
                             <h6 class="fw-bold text-primary mb-1">
                                 {{ $d['title'] }}
                             </h6>
@@ -64,7 +64,11 @@
                                 <span class="small text-muted">average bid</span>
                             </p>
                             <div class="mt-2">
-                                <i class="fa-regular fa-heart text-muted"></i>
+                                <div class="mt-2">
+                                    <i class="fa-regular fa-heart text-muted fav-icon" data-jobid="{{ $d['id'] }}"
+                                        data-fav="false" style="cursor: pointer;"></i>
+                                </div>
+
                             </div>
                             <button type="button" class="btn btn-primary mt-4"><i class="fa-regular fa-circle-check"
                                     style="font-size: 22px; vertical-align: middle;"></i> Apply</button>
@@ -81,6 +85,47 @@
 
 
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".fav-icon").forEach(function(icon) {
+            icon.addEventListener("click", function(e) {
+                e.stopPropagation();
+
+                let jobId = this.dataset.jobid;
+                if (!jobId) {
+                    console.error("⚠️ Job ID missing on fav icon");
+                    return;
+                }
+
+                let isFav = this.dataset.fav === "true";
+                let add = !isFav;
+
+                fetch(`/favorite/${jobId}/${add}`, {
+                        method: "POST",
+                        headers: {
+                            "X-CSRF-TOKEN": document.querySelector(
+                                'meta[name="csrf-token"]').content,
+                            "Accept": "application/json"
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (add) {
+                            this.classList.remove("fa-regular", "text-muted");
+                            this.classList.add("fa-solid", "text-danger");
+                            this.dataset.fav = "true";
+                        } else {
+                            this.classList.remove("fa-solid", "text-danger");
+                            this.classList.add("fa-regular", "text-muted");
+                            this.dataset.fav = "false";
+                        }
+                    })
+                    .catch(err => console.error("Error:", err));
+            });
+        });
+    });
+</script>
+
 @include('freelancer.partials.js')
 
 </html>
