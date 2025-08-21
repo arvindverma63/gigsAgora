@@ -69,3 +69,4 @@ Route::get('/auth/logout',[AuthController::class,'logout'])->name('logout');
 Route::post('/favorite/{jobId}/{add}', [CommonController::class, 'addFav'])
     ->whereNumber('jobId')
     ->where('add', '^(true|false|1|0)$');
+Route::get('/AllJobProposals',[FreelancerPageController::class,'allJobProposals'])->name('all.proposals');

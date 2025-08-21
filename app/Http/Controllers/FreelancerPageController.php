@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\Jobs;
+use App\Services\Proposals;
 use Illuminate\Http\Request;
 
 class FreelancerPageController extends Controller
@@ -13,5 +14,8 @@ class FreelancerPageController extends Controller
     public function jobView(Jobs $jobs,$id){
         $data = $jobs->getJobById($id);
         return view('freelancer.job-view',['data'=>$data]);
+    }
+    public function allJobProposals(Proposals $proposals){
+        return view('freelancer.view-all-proposals',['proposals'=>$proposals->getAllJobProposals()]);
     }
 }

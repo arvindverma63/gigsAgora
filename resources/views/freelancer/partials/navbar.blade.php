@@ -133,7 +133,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="myWorkDropdown">
                     <li><a class="dropdown-item" href="#">Active Jobs</a></li>
-                    <li><a class="dropdown-item" href="#">Proposals</a></li>
+                    <li><a class="dropdown-item" href="{{route('all.proposals')}}">Proposals</a></li>
                     <li><a class="dropdown-item" href="#">Completed Jobs</a></li>
                     <li><a class="dropdown-item" href="#">Saved Jobs</a></li>
                 </ul>

@@ -25,4 +25,15 @@ class Proposals{
 
         return $response->json();
     }
+
+    public function getAllJobProposals(){
+        $authData = Session::get('auth_data');
+        $baseUrl = env('API_BASE_URL');
+        $response = Http::withHeaders([
+            'Authorization'=>'Bearer '.$authData['token'],
+        ])->get($baseUrl."api/Freelancer/GetAllJobProposals");
+
+        return $response->json();
+    }
+
 }
