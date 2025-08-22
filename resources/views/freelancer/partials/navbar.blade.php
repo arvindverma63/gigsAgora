@@ -104,7 +104,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark px-3">
     <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="{{ asset('dashboard-css/img/logo/logo-trans.png') }}" style="height: 50px; padding-bottom: 10px;" alt="Docker Logo">
+        <img src="{{ asset('dashboard-css/img/logo/logo-trans.png') }}" style="height: 50px; padding-bottom: 10px;"
+            alt="Docker Logo">
     </a>
 
     <!-- Navbar toggler for mobile -->
@@ -133,7 +134,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="myWorkDropdown">
                     <li><a class="dropdown-item" href="#">Active Jobs</a></li>
-                    <li><a class="dropdown-item" href="{{route('all.proposals')}}">Proposals</a></li>
+                    <li><a class="dropdown-item" href="{{ route('all.proposals') }}">Proposals</a></li>
                     <li><a class="dropdown-item" href="#">Completed Jobs</a></li>
                     <li><a class="dropdown-item" href="#">Saved Jobs</a></li>
                 </ul>
@@ -186,8 +187,9 @@
                     aria-label="Search">
 
                 <!-- Dropdown -->
-                <button class="btn dropdown-toggle" style="background: rgb(255, 255, 255);color: black; border: 1px solid rgba(0, 0, 0, 0.164);" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                <button class="btn dropdown-toggle"
+                    style="background: rgb(255, 255, 255);color: black; border: 1px solid rgba(0, 0, 0, 0.164);"
+                    type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Jobs
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" style="z-index: 10000">
@@ -200,37 +202,56 @@
 
 
         <!-- Icons & Profile -->
-        <div class="d-flex align-items-center">
-            <i class="bi bi-bell nav-icon" title="Notifications"></i>
-            <i class="bi bi-chat-right-dots nav-icon" title="Messages"></i>
+        <div class="d-flex align-items-center gap-3">
+            <!-- Notifications -->
+            <i class="bi bi-bell nav-icon position-relative" title="Notifications">
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    3
+                </span>
+            </i>
+
+            <!-- Messages -->
+            <i class="bi bi-chat-right-dots nav-icon position-relative" title="Messages">
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                    5
+                </span>
+            </i>
+
+            <!-- Dropdown -->
             <div class="dropdown">
-                <button class="btn btn-avatar" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <div class="avatar-icon">A</div>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end shadow" style="z-index: 100000;" aria-labelledby="dropdownMenuButton">
-                    <div class="dropdown-header">
-                        <div class="avatar">A</div>
-                        <div class="mt-2">{{Session::get('auth_data')['username']}}</div>
+                <button class="btn btn-light d-flex align-items-center px-2 py-1 rounded-pill" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="avatar-icon bg-primary text-white fw-bold rounded-circle d-flex align-items-center justify-content-center"
+                        style="width:30px; height:30px; font-size:14px;">
+                        A
                     </div>
-                    <li><a class="dropdown-item" href="#">What's new</a></li>
-                    <li><a class="dropdown-item" href="#">My profile</a></li>
-                    <li><a class="dropdown-item" href="#">Account settings</a></li>
-                    <li><a class="dropdown-item" href="#">Billing</a></li>
+                    <i class="bi bi-caret-down-fill ms-1 small"></i>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-2"
+                    aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item py-2" href="#"><i class="bi bi-person me-2"></i> Profile</a>
+                    </li>
+                    <li><a class="dropdown-item py-2" href="#"><i class="bi bi-gear me-2"></i> Settings</a>
+                    </li>
+                    <li><a class="dropdown-item py-2" href="#"><i class="bi bi-credit-card me-2"></i>
+                            Billing</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item text-danger" href="/auth/logout">Sign out</a></li>
+                    <li>
+                        <a class="dropdown-item text-danger py-2" href="/auth/logout">
+                            <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
+
     </div>
 </nav>
 @if (Route::is('job.view'))
-
 @else
-
-@include('freelancer.partials.left-sidebar')
-@include('freelancer.partials.sidenav')
-
+    @include('freelancer.partials.left-sidebar')
+    @include('freelancer.partials.sidenav')
 @endif
