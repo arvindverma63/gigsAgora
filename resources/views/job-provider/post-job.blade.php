@@ -3,13 +3,12 @@
 @include('job-provider.partials.head')
 
 <link rel="stylesheet" href="{{ asset('dashboard-css/job-post.css') }}">
+<link rel="stylesheet" href="{{ asset('step-form/form.css') }}">
 
 <body class="bg-light">
     @include('job-provider.partials.navbar')
 
     <div class="container mt-3">
-        <h2 class="h4 mb-3 text-center" style="color: #004b7d;"><i class="fas fa-briefcase me-2"></i>Create Job Post</h2>
-
         <!-- Session Messages -->
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -37,365 +36,232 @@
             </div>
         @endif
 
-        <!-- Progress Bar -->
-        <div class="progress mb-3">
-            <div class="progress-bar bg-primary" style="width: 20%; background-color: #004b7d !important;"></div>
+        <div class="container mt-5">
+            <div class="text-center mb-4">
+                <h2 style="color: #00913a;">Create Job Posting</h2>
+                <p class="text-muted">Share your opportunity with talented professionals</p>
+            </div>
+            <div class="progress mb-4">
+                <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+            </div>
+            <div class="step-container" id="stepNav">
+                <div class="step">
+                    <div class="step-circle active" data-step="1">1</div>
+                    <div class="step-title">Job Title</div>
+                    <div class="step-subtitle">Basic job information</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle" data-step="2">2</div>
+                    <div class="step-title">Skills</div>
+                    <div class="step-subtitle">Required skills and experience</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle" data-step="3">3</div>
+                    <div class="step-title">Job Type & Budget</div>
+                    <div class="step-subtitle">Employment details</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle" data-step="4">4</div>
+                    <div class="step-title">Location & Language</div>
+                    <div class="step-subtitle">Geographic preferences</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle" data-step="5">5</div>
+                    <div class="step-title">Post Options</div>
+                    <div class="step-subtitle">Visibility and features</div>
+                </div>
+            </div>
+            <div class="card" id="formContainer">
+                <div class="form-section active" id="step1">
+                    <h5 class="card-title">Basic job information</h5>
+                    <div class="mb-3">
+                        <label for="jobTitle" class="form-label">Job Title *</label>
+                        <input type="text" class="form-control" id="jobTitle" value="Senior Laravel" required>
+                        <small class="text-muted">Be specific and use keywords that candidates would search for</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="jobDescription" class="form-label">Job Description *</label>
+                        <textarea class="form-control" id="jobDescription" rows="5" placeholder="Description" required></textarea>
+                        <small class="text-muted">Include key responsibilities, requirements, and what makes this
+                            opportunity exciting</small>
+                    </div>
+                </div>
+                <div class="form-section p-4 mb-4" id="step2">
+                    <h5 class="mb-3">Required skills and experience</h5>
+
+                    <!-- Required Skills -->
+                    <div class="mb-3">
+                        <label for="skills" class="form-label">Required Skills *</label>
+                        <input type="text" class="form-control" id="skills"
+                            placeholder="Add a skill (e.g. React, TypeScript, Node.js)" required>
+                        <div id="skillsContainer" class="mt-3"></div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Experience Level -->
+                        <div class="col-md-6 mb-3">
+                            <label for="experience" class="form-label">Experience Level *</label>
+                            <select id="experience" class="form-select">
+                                <option>Beginner (1-2 years)</option>
+                                <option>Intermediate (3-5 years)</option>
+                                <option selected>Expert (5+ years)</option>
+                            </select>
+                        </div>
+
+                        <!-- Talent Type -->
+                        <div class="col-md-6 mb-3">
+                            <label for="talentType" class="form-label">Talent Type</label>
+                            <select id="talentType" class="form-select">
+                                <option>Individual</option>
+                                <option selected>Agency</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Minimum Success Score -->
+                        <div class="col-md-6 mb-3">
+                            <label for="successScore" class="form-label">Minimum Success Score</label>
+                            <select id="successScore" class="form-select">
+                                <option>Minimum 50%</option>
+                                <option>Minimum 60%</option>
+                                <option>Minimum 70%</option>
+                                <option>Minimum 80%</option>
+                            </select>
+                        </div>
+
+                        <!-- Minimum Earning Score -->
+                        <div class="col-md-6 mb-3">
+                            <label for="earningScore" class="form-label">Minimum Earning Score</label>
+                            <select id="earningScore" class="form-select">
+                                <option>Minimum $10K</option>
+                                <option>Minimum $20K</option>
+                                <option>Minimum $50K</option>
+                                <option selected>Minimum $80K</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section p-4 mb-4" id="step3">
+                    <h5 class="card-title mb-3">Employment details</h5>
+
+                    <!-- Job Type -->
+                    <div class="mb-3">
+                        <label class="form-label d-block">Job Type *</label>
+                        <div class="d-flex gap-3">
+                            <label class="flex-fill border rounded p-3 d-flex align-items-center">
+                                <input type="radio" name="jobType" value="Fixed Price"
+                                    class="form-check-input me-2" checked>
+                                <div>
+                                    <div class="fw-bold">💲 Fixed Price</div>
+                                    <small class="text-muted">One-time payment for the entire project</small>
+                                </div>
+                            </label>
+
+                            <label class="flex-fill border rounded p-3 d-flex align-items-center">
+                                <input type="radio" name="jobType" value="Hourly Rate"
+                                    class="form-check-input me-2">
+                                <div>
+                                    <div class="fw-bold">⏱ Hourly Rate</div>
+                                    <small class="text-muted">Pay per hour of work completed</small>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Budget and Duration -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="budget" class="form-label">Budget *</label>
+                            <input type="number" class="form-control" id="budget" placeholder="Enter budget"
+                                value="0">
+                            <small class="text-muted" id="budgetHelp">Total project budget</small>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="duration" class="form-label">Project Duration *</label>
+                            <select id="duration" class="form-select">
+                                <option selected>Within a Week</option>
+                                <option>1-4 Weeks</option>
+                                <option>1-3 Months</option>
+                                <option>More than 3 Months</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Budget Summary -->
+                    <div class="border rounded p-3 bg-light mt-3">
+                        <h6 class="fw-bold">💲 Budget Summary</h6>
+                        <div class="row mt-2">
+                            <div class="col-md-4">
+                                <strong>Budget</strong>
+                                <div id="summaryBudget">0</div>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Payment Type</strong>
+                                <div id="summaryType">Fixed Price</div>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Duration</strong>
+                                <div id="summaryDuration">Within a Week</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section p-4 mb-4" id="step4">
+                    <h5 class="card-title mb-3">Geographic preferences</h5>
+
+                    <div class="row">
+                        <!-- Location Preferences -->
+                        <div class="col-md-6 mb-3">
+                            <div class="border rounded p-3 h-100">
+                                <h6 class="fw-bold mb-1">📍 Location Preferences</h6>
+                                <small class="text-muted d-block mb-3">Specify preferred countries or regions</small>
+
+                                <label for="location" class="form-label fw-semibold">Preferred Countries</label>
+                                <input type="text" class="form-control" id="location"
+                                    placeholder="e.g. United States, Canada, United Kingdom">
+                                <small class="text-muted">Leave empty for worldwide, or specify countries separated by
+                                    commas</small>
+                            </div>
+                        </div>
+
+                        <!-- Language Requirements -->
+                        <div class="col-md-6 mb-3">
+                            <div class="border rounded p-3 h-100">
+                                <h6 class="fw-bold mb-1">💬 Language Requirements</h6>
+                                <small class="text-muted d-block mb-3">Communication language preferences</small>
+
+                                <label for="languages" class="form-label fw-semibold">Required Languages</label>
+                                <input type="text" class="form-control" id="languages"
+                                    placeholder="e.g. English, Spanish, French">
+                                <small class="text-muted">Specify languages separated by commas</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section" id="step5">
+                    <h5 class="card-title">Post Options</h5>
+                    <div class="mb-3">
+                        <label for="options" class="form-label">Options *</label>
+                        <input type="text" class="form-control" id="options" placeholder="Enter options"
+                            required>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-outline-secondary" id="backBtn">Back</button>
+                <button class="btn btn-primary" id="nextBtn">Next</button>
+            </div>
         </div>
-
-        <form id="jobPostForm" action="{{ route('job-provider.create-job-offer') }}" method="POST" novalidate>
-            @csrf
-            <!-- Step 1: Basic Info -->
-            <div class="wizard-step active" data-step="1">
-                <div class="card p-3">
-                    <h5 class="h6 mb-2 text-center" style="color: #004b7d; font-weight: 600;"><i
-                            class="fas fa-info-circle me-2"></i>Basic Info</h5>
-                    <div class="mb-2">
-                        <label class="form-label">Title</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-heading"></i></span>
-                            <input type="text" class="form-control @error('title') is-invalid @enderror"
-                                name="title" required>
-                            @error('title')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label">Description</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-align-left"></i></span>
-                            <textarea class="form-control @error('description') is-invalid @enderror" rows="3" name="description" required></textarea>
-                            @error('description')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label">Amount</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
-                            <input type="number" class="form-control @error('amount') is-invalid @enderror"
-                                name="amount" required min="0">
-                            @error('amount')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label">Offer Date</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
-                            <input type="datetime-local" class="form-control @error('offerDate') is-invalid @enderror"
-                                name="offerDate" required>
-                            @error('offerDate')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 2: Requirements -->
-            <div class="wizard-step" data-step="2">
-                <div class="card p-3">
-                    <h5 class="h6 mb-2 text-center" style="color: #004b7d; font-weight: 600;"><i
-                            class="fas fa-list-ul me-2"></i>Requirements</h5>
-                    <div class="row">
-                        <div class="col-md-6 mb-2">
-                            <label class="form-label">Experience Level</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-graduation-cap"></i></span>
-                                <select class="form-select @error('experienceLevel') is-invalid @enderror"
-                                    name="experienceLevel" required>
-                                    <option value="0">Beginner</option>
-                                    <option value="1">Intermediate</option>
-                                    <option value="2">Expert</option>
-                                </select>
-                                @error('experienceLevel')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <label class="form-label">Job Type</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
-                                <select class="form-select @error('jobType') is-invalid @enderror" name="jobType"
-                                    required>
-                                    <option value="0">Fixed Price</option>
-                                    <option value="1">Hourly</option>
-                                </select>
-                                @error('jobType')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-2">
-                            <label class="form-label">Job Offer Duration (days)</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-clock"></i></span>
-                                <input type="number"
-                                    class="form-control @error('jobOfferDuration') is-invalid @enderror"
-                                    name="jobOfferDuration" required min="1">
-                                @error('jobOfferDuration')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <label class="form-label">Minimum Success Score</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-star"></i></span>
-                                <input type="number"
-                                    class="form-control @error('minimumSuccessScore') is-invalid @enderror"
-                                    name="minimumSuccessScore" required min="0">
-                                @error('minimumSuccessScore')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-2">
-                            <label class="form-label">Minimum Earning Score</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-money-bill"></i></span>
-                                <input type="number"
-                                    class="form-control @error('minimumEarningScore') is-invalid @enderror"
-                                    name="minimumEarningScore" required min="0">
-                                @error('minimumEarningScore')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <label class="form-label">Talent Type</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
-                                <input type="text"
-                                    class="form-control @error('requiredTalentType') is-invalid @enderror"
-                                    name="requiredTalentType">
-                                @error('requiredTalentType')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-2">
-                            <label class="form-label">Languages</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-language"></i></span>
-                                <input type="text" class="form-control @error('languages') is-invalid @enderror"
-                                    name="languages">
-                                @error('languages')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <label class="form-label">Countries</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-globe"></i></span>
-                                <input type="text" class="form-control @error('countries') is-invalid @enderror"
-                                    name="countries">
-                                @error('countries')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label">Skills Required</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-tools"></i></span>
-                            <input type="text" class="form-control" id="skillsInput"
-                                placeholder="Type a skill and press Enter">
-                            @error('skillsRequired.*')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div id="skillsList" class="mt-2"></div>
-                        <!-- Hidden inputs to store skills array -->
-                        <div id="skillsHiddenInputs"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 3: Milestones -->
-            <div class="wizard-step" data-step="3">
-                <div class="card p-3">
-                    <h5 class="h6 mb-2 text-center" style="color: #004b7d; font-weight: 600;"><i
-                            class="fas fa-tasks me-2"></i>Milestones</h5>
-                    <div id="milestoneList">
-                        <div class="border p-2 mb-2 milestone-item rounded">
-                            <div class="mb-2">
-                                <label class="form-label">Milestone Title</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-heading"></i></span>
-                                    <input type="text"
-                                        class="form-control @error('milestone_title.*') is-invalid @enderror"
-                                        name="milestone_title[]">
-                                    @error('milestone_title.*')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <label class="form-label">Description</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-align-left"></i></span>
-                                    <textarea class="form-control @error('milestone_description.*') is-invalid @enderror" rows="2"
-                                        name="milestone_description[]"></textarea>
-                                    @error('milestone_description.*')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-2">
-                                    <label class="form-label">Amount</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
-                                        <input type="number"
-                                            class="form-control @error('milestone_amount.*') is-invalid @enderror"
-                                            name="milestone_amount[]" min="0">
-                                        @error('milestone_amount.*')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-2">
-                                    <label class="form-label">Due On</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
-                                        <input type="date"
-                                            class="form-control @error('milestone_dueOn.*') is-invalid @enderror"
-                                            name="milestone_dueOn[]">
-                                        @error('milestone_dueOn.*')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-outline-primary btn-sm w-100" id="addMilestone"><i
-                            class="fas fa-plus me-1"></i>Add Milestone</button>
-                </div>
-            </div>
-
-            <!-- Step 4: Settings -->
-            <div class="wizard-step" data-step="4">
-                <div class="card p-3">
-                    <h5 class="h6 mb-2 text-center" style="color: #004b7d; font-weight: 600;"><i
-                            class="fas fa-cog me-2"></i>Settings</h5>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input @error('isSponsored') is-invalid @enderror" type="checkbox"
-                            name="isSponsored" id="isSponsored">
-                        <label class="form-check-label" for="isSponsored"><i
-                                class="fas fa-bullhorn me-1"></i>Sponsored</label>
-                        @error('isSponsored')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input @error('isHighlighted') is-invalid @enderror" type="checkbox"
-                            name="isHighlighted" id="isHighlighted">
-                        <label class="form-check-label" for="isHighlighted"><i
-                                class="fas fa-highlighter me-1"></i>Highlighted</label>
-                        @error('isHighlighted')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input @error('isFeatured') is-invalid @enderror" type="checkbox"
-                            name="isFeatured" id="isFeatured">
-                        <label class="form-check-label" for="isFeatured"><i
-                                class="fas fa-star me-1"></i>Featured</label>
-                        @error('isFeatured')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 5: Review -->
-            <div class="wizard-step" data-step="5">
-                <div class="card p-3">
-                    <h5 class="h6 mb-2 text-center" style="color: #004b7d; font-weight: 600;"><i
-                            class="fas fa-eye me-2"></i>Review Details</h5>
-                    <div class="review-section">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h6>Basic Info</h6>
-                            <button type="button" class="btn btn-outline-primary btn-sm" onclick="editStep(1)"><i
-                                    class="fas fa-edit me-1"></i>Edit</button>
-                        </div>
-                        <div class="review-item"><strong>Title:</strong> <span id="review-title"></span></div>
-                        <div class="review-item"><strong>Description:</strong> <span id="review-description"></span>
-                        </div>
-                        <div class="review-item"><strong>Amount:</strong> <span id="review-amount"></span></div>
-                        <div class="review-item"><strong>Offer Date:</strong> <span id="review-offerDate"></span>
-                        </div>
-                    </div>
-                    <div class="review-section">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h6>Requirements</h6>
-                            <button type="button" class="btn btn-outline-primary btn-sm" onclick="editStep(2)"><i
-                                    class="fas fa-edit me-1"></i>Edit</button>
-                        </div>
-                        <div class="review-item"><strong>Experience Level:</strong> <span
-                                id="review-experienceLevel"></span></div>
-                        <div class="review-item"><strong>Job Type:</strong> <span id="review-jobType"></span></div>
-                        <div class="review-item"><strong>Job Offer Duration:</strong> <span
-                                id="review-jobOfferDuration"></span></div>
-                        <div class="review-item"><strong>Minimum Success Score:</strong> <span
-                                id="review-minimumSuccessScore"></span></div>
-                        <div class="review-item"><strong>Minimum Earning Score:</strong> <span
-                                id="review-minimumEarningScore"></span></div>
-                        <div class="review-item"><strong>Talent Type:</strong> <span
-                                id="review-requiredTalentType"></span></div>
-                        <div class="review-item"><strong>Languages:</strong> <span id="review-languages"></span></div>
-                        <div class="review-item"><strong>Countries:</strong> <span id="review-countries"></span></div>
-                        <div class="review-item"><strong>Skills Required:</strong> <span
-                                id="review-skillsRequired"></span></div>
-                    </div>
-                    <div class="review-section">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h6>Milestones</h6>
-                            <button type="button" class="btn btn-outline-primary btn-sm" onclick="editStep(3)"><i
-                                    class="fas fa-edit me-1"></i>Edit</button>
-                        </div>
-                        <div id="review-milestones"></div>
-                    </div>
-                    <div class="review-section">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h6>Settings</h6>
-                            <button type="button" class="btn btn-outline-primary btn-sm" onclick="editStep(4)"><i
-                                    class="fas fa-edit me-1"></i>Edit</button>
-                        </div>
-                        <div class="review-item"><strong>Sponsored:</strong> <span id="review-isSponsored"></span>
-                        </div>
-                        <div class="review-item"><strong>Highlighted:</strong> <span id="review-isHighlighted"></span>
-                        </div>
-                        <div class="review-item"><strong>Featured:</strong> <span id="review-isFeatured"></span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <div class="mt-3 d-flex justify-content-between">
-                <button type="button" class="btn btn-secondary btn-sm" id="prevBtn"><i
-                        class="fas fa-arrow-left me-1"></i>Previous</button>
-                <button type="button" class="btn btn-primary btn-sm" id="nextBtn">Next<i
-                        class="fas fa-arrow-right ms-1"></i></button>
-            </div>
-        </form>
     </div>
 
-    <script src="{{ asset('js/job-post.js') }}"></script>
+    <script src="{{ asset('js/job-post.js') }}?v={{ time() }}"></script>
+
     @include('job-provider.partials.js')
 </body>
 

@@ -60,9 +60,6 @@ h4 {
     background: #004b7d;
     border: none;
 }
-.card:hover{
-    background: rgba(128, 128, 128, 0.185);
-}
 .card{
     cursor: pointer;
 }

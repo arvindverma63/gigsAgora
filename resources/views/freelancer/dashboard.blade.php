@@ -4,78 +4,143 @@
 
 <body>
     @include('freelancer.partials.navbar')
-
+<style>
+    /* ===== Job Card Styling to Match Image ===== */
+    .job-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 16px;
+        background: #fff;
+        transition: box-shadow 0.2s;
+    }
+    .job-card:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .job-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 6px;
+    }
+    .badge-featured {
+        background: #16a34a;
+        color: #fff;
+        font-size: 12px;
+        margin-right: 6px;
+    }
+    .badge-urgent {
+        background: #ef4444;
+        color: #fff;
+        font-size: 12px;
+    }
+    .job-description {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 8px;
+    }
+    .skill-badge {
+        background: #f3f4f6;
+        border: 1px solid #e5e7eb;
+        font-size: 12px;
+        font-weight: 500;
+        color: #111827;
+        margin: 2px;
+        border-radius: 6px;
+        padding: 4px 8px;
+    }
+    .rating {
+        color: #fbbf24;
+        font-size: 14px;
+        margin-right: 4px;
+    }
+    .rating strong {
+        color: #111827;
+    }
+    .verified {
+        background: #d1fae5;
+        color: #065f46;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 6px;
+        padding: 2px 6px;
+        margin: 0 6px;
+    }
+    .budget {
+        font-size: 18px;
+        font-weight: 600;
+        color: #16a34a;
+        margin-bottom: 2px;
+    }
+    .budget-type {
+        font-size: 13px;
+        color: #6b7280;
+    }
+    .job-meta {
+        font-size: 13px;
+        color: #6b7280;
+        margin-top: 4px;
+    }
+    .apply-btn {
+        font-size: 14px;
+        padding: 6px 14px;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+</style>
     <div class="main" style="padding-top: 60px;">
         <div class="container my-4 job-container mt-4">
-            @foreach ($data as $d)
-                <div class="card p-3 shadow-sm">
-                    <div class="row">
-                        <!-- Left Column: Title & Description -->
-                        <div class="col-md-9" data-bs-toggle="offcanvas" data-bs-target="#jobDetails{{ $d['id'] }}"
-                            aria-controls="jobDetails{{ $d['id'] }}">
-                            <h6 class="fw-bold text-primary mb-1">
-                                {{ $d['title'] }}
-                            </h6>
-                            <p class="mb-1 text-primary small">Budget $250 – 750 USD</p>
-                            <p class="text-muted small mb-2">
-                                Software Developer Needed to Hardcode Local Software for Secure Offline Use (No Internet
-                                Callback) Project Summary: We’re seeking a highly skilled and ethical software developer
-                                to
-                                modify an existing desktop application that currently performs an automatic internet
-                                callback on
-                                launch. When the software doesn't receive a response from the callback... <a
-                                    href="#" class="text-decoration-none">more</a>
+             @foreach ($data as $d)
+                <div class="job-card">
+                    <div class="d-flex justify-content-between flex-wrap">
+
+                        <!-- LEFT -->
+                        <div class="flex-grow-1 pe-3" data-bs-toggle="offcanvas"
+                            data-bs-target="#jobDetails{{ $d['id'] }}" aria-controls="jobDetails{{ $d['id'] }}">
+
+                            <h6 class="job-title">{{ $d['title'] }}</h6>
+
+                            <!-- Featured & Urgent -->
+                            <div class="mb-2">
+                                <span class="badge badge-featured">Featured</span>
+                                <span class="badge badge-urgent">Urgent</span>
+                            </div>
+
+                            <!-- Description -->
+                            <p class="job-description">
+                                {{ Str::limit($d['description'], 150, '...') }}
+                                <a href="#" class="text-decoration-none">More</a>
                             </p>
 
-                            <!-- Tags -->
+                            <!-- Skills -->
                             <div class="mb-2">
                                 @foreach ($d['skillsRequired'] as $s)
-                                    <span class="badge bg-light text-primary border me-1">{{ $s }}</span>
+                                    <span class="skill-badge">{{ $s }}</span>
                                 @endforeach
                             </div>
 
-                            <!-- Rating and Time -->
+                            <!-- Rating, Verified, Remote, Time -->
                             <div class="d-flex align-items-center flex-wrap small text-muted">
-                                <span class="text-pink me-2">
-                                    <i class="fa-solid fa-star text-warning"></i>
-                                    <i class="fa-solid fa-star text-pink"></i>
-                                    <i class="fa-solid fa-star text-pink"></i>
-                                    <i class="fa-solid fa-star text-pink"></i>
-                                    <i class="fa-solid fa-star text-pink"></i>
+                                <span class="rating">
+                                    ★ <strong>{{ $d['rating'] ?? '4.8' }}</strong>
+                                    ({{ $d['reviews'] ?? '47' }})
                                 </span>
-                                <span class="me-3" style="font-size: 14px;"><strong>1.0</strong></span>
-                                <span class="me-3 text-danger" style="font-size: 14px;"><i
-                                        class="fa-solid fa-comment-dots"></i> 11</span>
-
-                                <span style="font-size: 14px;">
-                                    {{ \Carbon\Carbon::parse($d['createdAt'])->diffForHumans() }}
-                                </span>
-
-                                <span class="badge level">Intermediate</span>
-                                <span class="badge sponsered">Sponsored</span>
+                                <span class="verified">Verified</span>
+                                <span class="me-3"><i class="fa-solid fa-location-dot"></i> Remote</span>
+                                <span>{{ \Carbon\Carbon::parse($d['createdAt'])->diffForHumans() }}</span>
                             </div>
                         </div>
 
-                        <!-- Right Column: Bids & Budget -->
-                        <div class="col-md-3 text-md-end text-start mt-3 mt-md-0">
-                            <p class="mb-1 text-muted small">68 Applied</p>
-                            <p class="mb-0 fw-bold text-dark">
-                                <span class="fs-5 text-success">₹{{ $d['amount'] }}</span> INR<br>
-                                <span class="small text-muted">average bid</span>
-                            </p>
-                            <div class="mt-2">
-                                <div class="mt-2">
-                                    <i class="fa-regular fa-heart text-muted fav-icon" data-jobid="{{ $d['id'] }}"
-                                        data-fav="false" style="cursor: pointer;"></i>
-                                </div>
-
-                            </div>
-                            <button type="button" class="btn btn-primary mt-4"><i class="fa-regular fa-circle-check"
-                                    style="font-size: 22px; vertical-align: middle;"></i> Apply</button>
+                        <!-- RIGHT -->
+                        <div class="text-md-end mt-3 mt-md-0" style="min-width: 200px;">
+                            <p class="budget">${{ $d['amount'] }}</p>
+                            <p class="budget-type">Fixed Price</p>
+                            <button type="button" class="btn btn-primary apply-btn">
+                                <i class="fa-regular fa-circle-check me-1"></i> Apply
+                            </button>
                         </div>
                     </div>
                 </div>
-
 
                 @include('freelancer.components.job-offcanvas', ['offcanvasId' => 'jobDetails' . $d['id']])
             @endforeach

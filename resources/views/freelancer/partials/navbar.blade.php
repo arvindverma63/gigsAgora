@@ -16,7 +16,7 @@
     }
 
     .navbar {
-        background: linear-gradient(to right, #004b7d, #007bff);
+        background: linear-gradient(to right, #005744, #00a337);
         padding: 0.5rem 1rem;
         position: fixed;
         top: 0;
@@ -104,7 +104,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark px-3">
     <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="{{ asset('dashboard-css/img/logo/logo-trans.png') }}" style="height: 50px; padding-bottom: 10px;"
+        <img src="{{ asset('website/assets/img/logo-2.png') }}" style="height: 50px; padding-bottom: 10px;"
             alt="Docker Logo">
     </a>
 

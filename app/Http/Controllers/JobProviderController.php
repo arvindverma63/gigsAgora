@@ -44,6 +44,7 @@ class JobProviderController extends Controller
             return redirect()->route('auth.form')->withErrors(['message' => 'Please login to create a job offer']);
         }
 
+        Log::info("request job create ",['request'=> $request->all()]);
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -61,6 +62,7 @@ class JobProviderController extends Controller
             'isHighlighted' => 'boolean',
             'isFeatured' => 'boolean'
         ]);
+
 
         $data = $request->all();
         $data['offerDate'] = now()->toISOString();
