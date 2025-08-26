@@ -141,7 +141,7 @@
                                 <span class="verified">Verified</span>
                                 <span class="me-3"><i class="fa-solid fa-location-dot"></i> Remote</span>
                                 <span>
-                                    {{ !empty($d['createdAt']) ? \Carbon\Carbon::parse($d['createdAt'])->diffForHumans() : 'N/A' }}
+                                    {{ !empty($d['offerDate']) ? \Carbon\Carbon::parse($d['offerDate'])->diffForHumans() : 'N/A' }}
                                 </span>
 
                             </div>
