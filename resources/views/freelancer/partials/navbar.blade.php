@@ -133,44 +133,11 @@
                     My Work
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="myWorkDropdown">
-                    <li><a class="dropdown-item" href="#">Active Jobs</a></li>
                     <li><a class="dropdown-item" href="{{ route('all.proposals') }}">Proposals</a></li>
-                    <li><a class="dropdown-item" href="#">Completed Jobs</a></li>
-                    <li><a class="dropdown-item" href="#">Saved Jobs</a></li>
                 </ul>
             </li>
 
-            <!-- My Gigs -->
-            <li class="nav-item dropdown">
-                <a class="nav-link top-nav-link dropdown-toggle" href="#" id="myGigsDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    My Gigs
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="myGigsDropdown">
-                    <li class="dropdown-header">Explore</li>
-                    <li><a class="dropdown-item" href="#">Add New</a></li>
-                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Active Orders</a></li>
-                </ul>
-            </li>
 
-            <!-- My Team -->
-            <li class="nav-item dropdown">
-                <a class="nav-link top-nav-link dropdown-toggle" href="#" id="myTeamDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    My Team
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="myTeamDropdown">
-                    <li><a class="dropdown-item" href="#">Explore</a></li>
-                    <li><a class="dropdown-item" href="#">Create New Team</a></li>
-                    <li><a class="dropdown-item" href="#">Team Notifications</a></li>
-                    <li><a class="dropdown-item" href="#">New Invitations</a></li>
-                </ul>
-            </li>
         </ul>
 
 
