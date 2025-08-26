@@ -5,12 +5,15 @@
 h6 {
     color: #003b2d !important;
 }
+
 h5 {
     color: #003b2d !important;
 }
+
 h4 {
     color: #003b2d !important;
 }
+
 .form-check-label {
     color: #003b2d;
 }
@@ -24,7 +27,13 @@ h4 {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 50%;
+}
+
+@media(max-width: 756px) {
+    .container {
+        max-width: 100%;
+    }
 }
 
 .badge {
@@ -56,17 +65,21 @@ h4 {
     color: white;
     font-weight: 500;
 }
-.btn-primary{
+
+.btn-primary {
     background: #004b7d;
     border: none;
 }
-.card{
+
+.card {
     cursor: pointer;
 }
-.sidebar{
+
+.sidebar {
     z-index: 10 !important;
 }
-.proposal-title{
+
+.proposal-title {
     margin-top: 50px;
     padding: 20px;
 }
