@@ -31,18 +31,10 @@
 
       <h6 class="mt-4 fw-bold" style="color: #004b7d !important;">Details</h6>
       <dl class="row">
-        <dt class="col-sm-4">Job Provider ID</dt>
-        <dd class="col-sm-8">{{ $d['jobProviderId'] }}</dd>
-        <dt class="col-sm-4">Freelancer ID</dt>
-        <dd class="col-sm-8">{{ $d['freelancerId'] ?? 'N/A' }}</dd>
-        <dt class="col-sm-4">Team ID</dt>
-        <dd class="col-sm-8">{{ $d['teamId'] ?? 'N/A' }}</dd>
         <dt class="col-sm-4">Amount</dt>
         <dd class="col-sm-8">${{ number_format($d['amount'], 2) }}</dd>
         <dt class="col-sm-4">Offer Date</dt>
         <dd class="col-sm-8">{{ \Carbon\Carbon::parse($d['offerDate'])->format('M d, Y h:i A') }}</dd>
-        <dt class="col-sm-4">Status</dt>
-        <dd class="col-sm-8">{{ $d['status'] }}</dd>
         <dt class="col-sm-4">Job Offer Duration</dt>
         <dd class="col-sm-8">{{ $d['jobOfferDuration'] }}</dd>
         <dt class="col-sm-4">Experience Level</dt>
@@ -75,30 +67,6 @@
           <li>No skills specified</li>
         @endforelse
       </ul>
-
-      <h6 class="mt-4 fw-bold" style="color: #004b7d !important;">Milestones</h6>
-      <div class="accordion" id="milestonesAccordion">
-        @forelse($d['milestones'] as $index => $milestone)
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="milestoneHeading{{ $index }}">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#milestoneCollapse{{ $index }}" aria-expanded="false" aria-controls="milestoneCollapse{{ $index }}">
-                {{ $milestone['title'] }} - ${{ number_format($milestone['amount'], 2) }}
-              </button>
-            </h2>
-            <div id="milestoneCollapse{{ $index }}" class="accordion-collapse collapse" aria-labelledby="milestoneHeading{{ $index }}">
-              <div class="accordion-body">
-                <p><strong>Description:</strong> {{ $milestone['description'] }}</p>
-                <p><strong>Work Done:</strong> {{ $milestone['workDone'] }}</p>
-                <p><strong>Status:</strong> {{ $milestone['jobMilestoneStatus'] }}</p>
-                <p><strong>Due On:</strong> {{ \Carbon\Carbon::parse($milestone['dueOn'])->format('M d, Y h:i A') }}</p>
-                <p><strong>Completed On:</strong> {{ \Carbon\Carbon::parse($milestone['completedOn'])->format('M d, Y h:i A') }}</p>
-              </div>
-            </div>
-          </div>
-        @empty
-          <p>No milestones defined</p>
-        @endforelse
-      </div>
 
       <h6 class="mt-4 fw-bold" style="color: #004b7d !important;">Flags</h6>
       <dl class="row">
