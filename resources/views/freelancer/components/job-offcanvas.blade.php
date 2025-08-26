@@ -17,7 +17,7 @@
     <!-- Main Content -->
     <div class="flex-grow-1" style="max-width: 65%;">
       <small class="text-muted mb-3 d-block">
-        Posted {{ \Carbon\Carbon::parse($d['createdAt'])->diffForHumans() }} · Worldwide
+        Posted {{ \Carbon\Carbon::parse($d['offerDate'])->diffForHumans() }} · Worldwide
       </small>
 
       <div class="mt-2">
@@ -60,9 +60,9 @@
         <dt class="col-sm-4">Countries</dt>
         <dd class="col-sm-8">{{ $d['countries'] }}</dd>
         <dt class="col-sm-4">Created At</dt>
-        <dd class="col-sm-8">{{ \Carbon\Carbon::parse($d['createdAt'])->format('M d, Y h:i A') }}</dd>
+        <dd class="col-sm-8">{{ \Carbon\Carbon::parse($d['offerDate'])->format('M d, Y h:i A') }}</dd>
         <dt class="col-sm-4">Updated At</dt>
-        <dd class="col-sm-8">{{ \Carbon\Carbon::parse($d['updatedAt'])->format('M d, Y h:i A') }}</dd>
+        <dd class="col-sm-8">{{ \Carbon\Carbon::parse($d['offerDate'])->format('M d, Y h:i A') }}</dd>
       </dl>
 
       <h6 class="mt-4 fw-bold" style="color: #004b7d !important;">Skills Required</h6>
