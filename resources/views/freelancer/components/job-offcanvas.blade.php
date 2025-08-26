@@ -70,12 +70,6 @@
 
       <h6 class="mt-4 fw-bold" style="color: #004b7d !important;">Flags</h6>
       <dl class="row">
-        <dt class="col-sm-4">Published</dt>
-        <dd class="col-sm-8">{{ $d['isPublished'] ? 'Yes' : 'No' }}</dd>
-        <dt class="col-sm-4">Deleted</dt>
-        <dd class="col-sm-8">{{ $d['isDeleted'] ? 'Yes' : 'No' }}</dd>
-        <dt class="col-sm-4">Deleted At</dt>
-        <dd class="col-sm-8">{{ $d['deletedAt'] ?? 'N/A' }}</dd>
         <dt class="col-sm-4">Sponsored</dt>
         <dd class="col-sm-8">{{ $d['isSponsored'] ? 'Yes' : 'No' }}</dd>
         <dt class="col-sm-4">Highlighted</dt>
