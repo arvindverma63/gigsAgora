@@ -104,7 +104,6 @@
         <h6 class="fw-bold mb-3" style="color: #004b7d !important;">About the client</h6>
         <p class="mb-2 text-dark"><strong>Country:</strong> {{ $d['countries'] }}</p>
         <p class="mb-2 text-dark"><strong>Budget:</strong> ${{ number_format($d['amount'], 2) }}</p>
-        <p class="mb-0 text-dark"><strong>Status:</strong> {{ $d['status'] }}</p>
       </div>
     </div>
   </div>
