@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 class FreelancerPageController extends Controller
 {
     public function dashboard(Jobs $jobs){
-        Log::info('response data: ',['data '=>$jobs]);
+        Log::info('response data: ',['data '=>$jobs->getAllJobs()]);
         return view('freelancer.dashboard',['data'=>$jobs->getAllJobs()]);
     }
     public function jobView(Jobs $jobs,$id){
