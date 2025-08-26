@@ -117,3 +117,31 @@ jobTypeRadios.forEach(r => r.addEventListener("change", updateSummary));
 
 // Initialize
 updateSummary();
+
+const boostOptions = document.querySelectorAll(".boost-option");
+const summaryList = document.getElementById("summaryList");
+const summaryTotal = document.getElementById("summaryTotal");
+
+function updateSummaryTotal() {
+    let total = 0;
+    summaryList.innerHTML = "";
+
+    boostOptions.forEach(option => {
+        if (option.checked) {
+            const price = parseFloat(option.value); // ✅ use parseFloat
+            const label = option.getAttribute("data-label");
+
+            total += price;
+
+            const item = document.createElement("div");
+            item.textContent = `${label} - $${price}`;
+            summaryList.appendChild(item);
+        }
+    });
+
+    summaryTotal.textContent = `$${total}`;
+}
+
+boostOptions.forEach(option => {
+    option.addEventListener("change", updateSummaryTotal);
+});

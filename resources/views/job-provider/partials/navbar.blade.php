@@ -17,8 +17,14 @@
 
     .navbar {
         background: linear-gradient(to right, #005744, #00a337);
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
+        padding: 0.5rem 1rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1050;
+        /* Keep it above other elements */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .navbar-brand img {
@@ -83,10 +89,6 @@
         padding: 0;
     }
 
-    .top-nav-link {
-        font-size: 18px;
-    }
-
     .btn-avatar .avatar-icon {
         background-color: #004b7d;
         width: 40px;
@@ -98,24 +100,8 @@
         align-items: center;
         justify-content: center;
     }
-
-    .input-group .form-control {
-        box-shadow: none !important;
-    }
-
-    .input-group-text {
-        background-color: white;
-    }
-
-    .btn.dropdown-toggle {
-        border-left: 0;
-    }
-
-    .dropdown-item {
-        font-size: 16px;
-        font-weight: 600px;
-    }
 </style>
+
 <nav class="navbar navbar-expand-lg navbar-dark px-3">
     <a class="navbar-brand d-flex align-items-center" href="#">
         <img src="{{ asset('website/assets/img/logo-2.png') }}" style="height: 50px; padding-bottom: 10px;"
