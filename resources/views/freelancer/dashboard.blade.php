@@ -151,7 +151,9 @@
                         <div class="text-md-end mt-3 mt-md-0" style="min-width: 200px;">
                             <p class="budget">${{ $d['amount'] }}</p>
                             <p class="budget-type">Fixed Price</p>
-                            <button type="button" class="btn btn-primary apply-btn">
+                            <button type="button" class="btn btn-primary apply-btn" data-bs-toggle="offcanvas"
+                                data-bs-target="#jobDetails{{ $d['id'] }}"
+                                aria-controls="jobDetails{{ $d['id'] }}">
                                 <i class="fa-regular fa-circle-check me-1"></i> Apply
                             </button>
                         </div>
