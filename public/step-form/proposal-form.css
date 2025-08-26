@@ -1,0 +1,42 @@
+  .step {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .step .circle {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .step.active .circle {
+      background-color: #198754;
+      color: #fff;
+    }
+    .step.completed .circle {
+      background-color: #198754;
+      color: #fff;
+    }
+    .step.inactive .circle {
+      background-color: #e9ecef;
+      color: #6c757d;
+    }
+    .step-text {
+      margin-left: 10px;
+      font-weight: 500;
+    }
+    .step.active .step-text {
+      color: #198754;
+    }
+    .step.inactive .step-text {
+      color: #6c757d;
+    }
+    .form-step {
+      display: none;
+    }
+    .form-step.active {
+      display: block;
+    }

@@ -5,56 +5,83 @@ const formSections = document.querySelectorAll('#formContainer .form-section');
 const backBtn = document.getElementById('backBtn');
 const nextBtn = document.getElementById('nextBtn');
 
+// Function to update UI when step changes
 function updateStep(step) {
     currentStep = step;
+
+    // Highlight active step circle
     steps.forEach((s, index) => {
-        const circle = s;
-        if (index + 1 === currentStep) {
-            circle.classList.add('active');
-        } else {
-            circle.classList.remove('active');
-        }
+        s.classList.toggle('active', index + 1 === currentStep);
     });
+
+    // Show correct form section
     formSections.forEach((section, index) => {
-        if (index + 1 === currentStep) {
-            section.classList.add('active');
-        } else {
-            section.classList.remove('active');
-        }
+        const isActive = index + 1 === currentStep;
+        section.classList.toggle('active', isActive);
+
+        // Enable required only for visible fields
+        section.querySelectorAll('input, textarea, select').forEach(input => {
+            if (isActive) {
+                if (input.dataset.originalRequired === "true") {
+                    input.setAttribute('required', 'required');
+                }
+            } else {
+                if (input.hasAttribute('required')) {
+                    input.dataset.originalRequired = "true"; // mark it
+                }
+                input.removeAttribute('required');
+            }
+        });
     });
+
+    // Progress bar update
     const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
     document.querySelector('.progress-bar').style.width = `${progress}%`;
     document.querySelector('.progress-bar').setAttribute('aria-valuenow', progress);
 
+    // Back button disable on step 1
     backBtn.disabled = currentStep === 1;
-    nextBtn.textContent = currentStep === totalSteps ? 'Finish' : 'Next';
+
+    // Change Next → Finish
+    if (currentStep === totalSteps) {
+        nextBtn.textContent = 'Finish';
+        nextBtn.setAttribute('type', 'submit');
+    } else {
+        nextBtn.textContent = 'Next';
+        nextBtn.setAttribute('type', 'button');
+    }
 }
 
+
+// Step circle click
 steps.forEach(step => {
     step.addEventListener('click', (e) => {
         e.preventDefault();
         const stepNum = parseInt(step.getAttribute('data-step'));
-        if (stepNum <= currentStep + 1) { // Allow moving to next or previous steps
+        if (stepNum <= currentStep + 1) { // only allow next or previous
             updateStep(stepNum);
         }
     });
 });
 
-nextBtn.addEventListener('click', () => {
+// Next button
+nextBtn.addEventListener('click', (e) => {
     if (currentStep < totalSteps) {
+        e.preventDefault(); // stop form submission before last step
         updateStep(currentStep + 1);
-    } else {
-        alert('Job posting completed!');
     }
+    // if last step → type=submit handles form submission automatically
 });
 
-backBtn.addEventListener('click', () => {
+// Back button
+backBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     if (currentStep > 1) {
         updateStep(currentStep - 1);
     }
 });
 
-// Initialize
+// Initialize first step
 updateStep(1);
 
 
@@ -73,9 +100,18 @@ skillsInput.addEventListener("keydown", function (e) {
             pill.className = "badge bg-light text-dark me-2 mb-2 d-inline-flex align-items-center";
             pill.innerHTML = `${skill} <button type="button" class="btn-close btn-sm ms-2" aria-label="Remove"></button>`;
 
+            // Create hidden input for form submission
+            const hiddenInput = document.createElement("input");
+            hiddenInput.type = "hidden";
+            hiddenInput.name = "skillsRequired[]";   // <-- now it's skillsRequired[]
+            hiddenInput.value = skill;
+
+            // Attach hidden input to pill
+            pill.appendChild(hiddenInput);
+
             // Add remove event
             pill.querySelector("button").addEventListener("click", function () {
-                pill.remove();
+                pill.remove(); // removes pill + hidden input
             });
 
             // Append pill
@@ -144,4 +180,16 @@ function updateSummaryTotal() {
 
 boostOptions.forEach(option => {
     option.addEventListener("change", updateSummaryTotal);
+});
+
+
+
+//toast
+
+document.addEventListener("DOMContentLoaded", function () {
+    const toastElList = [].slice.call(document.querySelectorAll('.toast'))
+    toastElList.map(function (toastEl) {
+        const toast = new bootstrap.Toast(toastEl, { delay: 5000 }) // 5s auto-hide
+        toast.show()
+    })
 });

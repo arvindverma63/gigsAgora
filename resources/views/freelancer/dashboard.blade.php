@@ -4,93 +4,106 @@
 
 <body>
     @include('freelancer.partials.navbar')
-<style>
-    /* ===== Job Card Styling to Match Image ===== */
-    .job-card {
-        border: 1px solid #e5e7eb;
-        border-radius: 12px;
-        padding: 16px;
-        margin-bottom: 16px;
-        background: #fff;
-        transition: box-shadow 0.2s;
-    }
-    .job-card:hover {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
-    .job-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: #111827;
-        margin-bottom: 6px;
-    }
-    .badge-featured {
-        background: #16a34a;
-        color: #fff;
-        font-size: 12px;
-        margin-right: 6px;
-    }
-    .badge-urgent {
-        background: #ef4444;
-        color: #fff;
-        font-size: 12px;
-    }
-    .job-description {
-        font-size: 14px;
-        color: #6b7280;
-        margin-bottom: 8px;
-    }
-    .skill-badge {
-        background: #f3f4f6;
-        border: 1px solid #e5e7eb;
-        font-size: 12px;
-        font-weight: 500;
-        color: #111827;
-        margin: 2px;
-        border-radius: 6px;
-        padding: 4px 8px;
-    }
-    .rating {
-        color: #fbbf24;
-        font-size: 14px;
-        margin-right: 4px;
-    }
-    .rating strong {
-        color: #111827;
-    }
-    .verified {
-        background: #d1fae5;
-        color: #065f46;
-        font-size: 12px;
-        font-weight: 600;
-        border-radius: 6px;
-        padding: 2px 6px;
-        margin: 0 6px;
-    }
-    .budget {
-        font-size: 18px;
-        font-weight: 600;
-        color: #16a34a;
-        margin-bottom: 2px;
-    }
-    .budget-type {
-        font-size: 13px;
-        color: #6b7280;
-    }
-    .job-meta {
-        font-size: 13px;
-        color: #6b7280;
-        margin-top: 4px;
-    }
-    .apply-btn {
-        font-size: 14px;
-        padding: 6px 14px;
-        border-radius: 8px;
-        margin-top: 10px;
-    }
-</style>
+    <style>
+        /* ===== Job Card Styling to Match Image ===== */
+        .job-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            background: #fff;
+            transition: box-shadow 0.2s;
+        }
+
+        .job-card:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .job-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+
+        .badge-featured {
+            background: #16a34a;
+            color: #fff;
+            font-size: 12px;
+            margin-right: 6px;
+        }
+
+        .badge-urgent {
+            background: #ef4444;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .job-description {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .skill-badge {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            font-size: 12px;
+            font-weight: 500;
+            color: #111827;
+            margin: 2px;
+            border-radius: 6px;
+            padding: 4px 8px;
+        }
+
+        .rating {
+            color: #fbbf24;
+            font-size: 14px;
+            margin-right: 4px;
+        }
+
+        .rating strong {
+            color: #111827;
+        }
+
+        .verified {
+            background: #d1fae5;
+            color: #065f46;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 6px;
+            padding: 2px 6px;
+            margin: 0 6px;
+        }
+
+        .budget {
+            font-size: 18px;
+            font-weight: 600;
+            color: #16a34a;
+            margin-bottom: 2px;
+        }
+
+        .budget-type {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .job-meta {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .apply-btn {
+            font-size: 14px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
     <div class="main" style="padding-top: 60px;">
         <div class="container my-4 job-container mt-4">
-             @foreach ($data as $d)
+            @foreach ($data as $d)
                 <div class="job-card">
                     <div class="d-flex justify-content-between flex-wrap">
 
@@ -127,7 +140,10 @@
                                 </span>
                                 <span class="verified">Verified</span>
                                 <span class="me-3"><i class="fa-solid fa-location-dot"></i> Remote</span>
-                                <span>{{ \Carbon\Carbon::parse($d['createdAt'])->diffForHumans() }}</span>
+                                <span>
+                                    {{ !empty($d['createdAt']) ? \Carbon\Carbon::parse($d['createdAt'])->diffForHumans() : 'N/A' }}
+                                </span>
+
                             </div>
                         </div>
 
