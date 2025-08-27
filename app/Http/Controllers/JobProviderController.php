@@ -52,7 +52,7 @@ class JobProviderController extends Controller
             'experienceLevel' => 'required|integer',
             'jobType' => 'required|integer',
             'jobOfferDuration' => 'required|integer',
-            'minimmumSuccessScore' => 'required|integer',
+            'minimumSuccessScore' => 'required|integer',
             'minimumEarningScore' => 'required|integer',
             'requiredTalentType' => 'required|integer',
             'languages' => 'required|string',

@@ -154,7 +154,7 @@
                                 <!-- Minimum Success Score -->
                                 <div class="col-md-6 mb-3">
                                     <label for="successScore" class="form-label">Minimum Success Score</label>
-                                    <select id="successScore" class="form-select" name="minimmumSuccessScore">
+                                    <select id="successScore" class="form-select" name="minimumSuccessScore">
                                         <option value="50" selected>Minimum 50%</option>
                                         <option value="60">Minimum 60%</option>
                                         <option value="70">Minimum 70%</option>

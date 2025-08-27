@@ -5,7 +5,8 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#pricing">Pricing</a></li>
-          <li><a href="/auth" class="btn btn-success btn-lg active p-2">Join US</a></li>
+          <li><a href="/registerType" class="btn btn-success btn-lg active p-2">Register</a></li>
+          <li><a href="/auth" class="btn btn-primary btn-lg active p-2">Login</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
