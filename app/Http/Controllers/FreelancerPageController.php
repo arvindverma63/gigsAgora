@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Services\Jobs;
 use App\Services\Proposals;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class FreelancerPageController extends Controller

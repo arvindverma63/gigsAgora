@@ -134,16 +134,26 @@ const summaryType = document.getElementById("summaryType");
 const summaryDuration = document.getElementById("summaryDuration");
 const budgetHelp = document.getElementById("budgetHelp");
 
+
 function updateSummary() {
-    let type = document.querySelector("input[name='jobType']:checked").value;
-    let budget = budgetInput.value || 0;
-    let duration = durationSelect.value;
+  let selected = document.querySelector("input[name='jobType']:checked");
+  if (!selected) return;
 
-    summaryBudget.textContent = type === "Hourly Rate" ? budget + "/hr" : budget;
-    summaryType.textContent = type;
-    summaryDuration.textContent = duration;
+  let type = selected.value;
+  let budget = budgetInput.value || 0;
+  let duration = durationSelect.value;
 
-    budgetHelp.textContent = type === "Hourly Rate" ? "Hourly rate" : "Total project budget";
+  summaryBudget.textContent = type === "Hourly Rate" ? budget + "/hr" : budget;
+  summaryType.textContent = type;
+  summaryDuration.textContent = duration;
+  budgetHelp.textContent = type === "Hourly Rate" ? "Hourly rate" : "Total project budget";
+
+  // ✅ highlight the selected card
+  console.log(type);
+  document.querySelectorAll(".job-card").forEach(label => {
+    label.classList.remove("selected");
+  });
+  selected.closest("label").classList.add("selected");
 }
 
 // Event listeners
