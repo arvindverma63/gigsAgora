@@ -91,15 +91,30 @@
     background: linear-gradient(90deg, #00913a 0%, #00a650 100%);
 }
 
-.fixed-green {
+.job-card.selected {
+    background-color: #e6f4ea; /* Light green background for selected state */
+    border-width: 2px; /* Thicker border for emphasis */
     border: 1px solid green;
-    background: #f0fff0;
-    transition: all 0.3s ease;
-    /* smooth animation */
+    box-shadow: 0 0 8px rgba(0, 145, 58, 0.3); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for visual feedback */
+}
+input[type="radio"]:checked{
+    background-color: green;
 }
 
-.fixed-red {
-    border: 1px solid red;
-    background: #fff0f0;
-    transition: all 0.3s ease;
+/* Ensure default state for non-selected cards */
+.job-card {
+    background-color: #fff; /* Default background */
+    border: 1px solid #dee2e6; /* Default Bootstrap border */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+#budget-summary{
+    background-color: #b1fac5; /* Light green background for selected state */
+    border-width: 2px; /* Thicker border for emphasis */
+    border: 1px solid green;
+    box-shadow: 0 0 8px rgba(0, 145, 58, 0.3); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for visual feedback */
+}
+.form-check-input:checked{
+    background-color: green;
 }

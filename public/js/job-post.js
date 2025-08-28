@@ -136,33 +136,46 @@ const budgetHelp = document.getElementById("budgetHelp");
 
 
 function updateSummary() {
-  let selected = document.querySelector("input[name='jobType']:checked");
-  if (!selected) return;
+    // Get the selected radio button
+    const selected = document.querySelector("input[name='jobType']:checked");
 
-  let type = selected.value;
-  let budget = budgetInput.value || 0;
-  let duration = durationSelect.value;
+    // Default values if no radio button is selected
+    const type = selected ? selected.value : "Fixed Price"; // Fallback to Fixed Price
+    const budget = budgetInput.value || 0;
+    const duration = durationSelect.options[durationSelect.selectedIndex]?.text || "1-4 Weeks"; // Use text for display
 
-  summaryBudget.textContent = type === "Hourly Rate" ? budget + "/hr" : budget;
-  summaryType.textContent = type;
-  summaryDuration.textContent = duration;
-  budgetHelp.textContent = type === "Hourly Rate" ? "Hourly rate" : "Total project budget";
+    // Update summary
+    summaryBudget.textContent = type === "Hourly Rate" ? `$${budget}/hr` : `$${budget}`;
+    summaryType.textContent = type;
+    summaryDuration.textContent = duration;
+    budgetHelp.textContent = type === "Hourly Rate" ? "Hourly rate" : "Total project budget";
 
-  // ✅ highlight the selected card
-  console.log(type);
-  document.querySelectorAll(".job-card").forEach(label => {
-    label.classList.remove("selected");
-  });
-  selected.closest("label").classList.add("selected");
+    // Highlight the selected card
+    document.querySelectorAll(".job-card").forEach(label => {
+        label.classList.remove("selected");
+    });
+
+    if (selected) {
+        const selectedLabel = selected.closest("label.job-card");
+        if (selectedLabel) {
+            selectedLabel.classList.add("selected");
+        }
+    } else {
+        // Fallback: Highlight the default (Fixed Price) card if no selection
+        const defaultLabel = document.querySelector("#fixed-price");
+        if (defaultLabel) {
+            defaultLabel.classList.add("selected");
+        }
+    }
 }
 
 // Event listeners
 budgetInput.addEventListener("input", updateSummary);
 durationSelect.addEventListener("change", updateSummary);
-jobTypeRadios.forEach(r => r.addEventListener("change", updateSummary));
+jobTypeRadios.forEach(radio => radio.addEventListener("change", updateSummary));
 
-// Initialize
-updateSummary();
+// Initialize on page load
+document.addEventListener("DOMContentLoaded", updateSummary);
 
 const boostOptions = document.querySelectorAll(".boost-option");
 const summaryList = document.getElementById("summaryList");

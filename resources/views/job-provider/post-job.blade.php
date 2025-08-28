@@ -3,7 +3,7 @@
 @include('job-provider.partials.head')
 
 <link rel="stylesheet" href="{{ asset('dashboard-css/job-post.css') }}">
-<link rel="stylesheet" href="{{ asset('step-form/form.css') }}">
+<link rel="stylesheet" href="{{ asset('step-form/form.css') }}?v={{time()}}">
 
 <body class="bg-light">
     @include('job-provider.partials.navbar')
@@ -283,7 +283,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="border rounded p-3 bg-light mt-3">
+                            <div class="border rounded p-3 bg-light mt-3" id="budget-summary">
                                 <h6 class="fw-bold"><i class="fa-solid fa-dollar-sign"></i> Budget Summary</h6>
                                 <div class="row mt-2">
                                     <div class="col-md-4">

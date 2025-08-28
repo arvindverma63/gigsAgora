@@ -217,7 +217,7 @@
 
     </div>
 </nav>
-@if (Route::is('job.view'))
+@if (Route::is('job.view') || Route::is('freelancer.profile'))
 @else
     @include('freelancer.partials.left-sidebar')
     @include('freelancer.partials.sidenav')
