@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FreelancerControllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,3 +71,7 @@ Route::post('/favorite/{jobId}/{add}', [CommonController::class, 'addFav'])
     ->whereNumber('jobId')
     ->where('add', '^(true|false|1|0)$');
 Route::get('/AllJobProposals',[FreelancerPageController::class,'allJobProposals'])->name('all.proposals');
+
+
+Route::post('/update/skills',[ProfileController::class,'updateSkills']);
+Route::get('/skills/suggestions/{request}',[ProfileController::class,'skillSuggestions']);

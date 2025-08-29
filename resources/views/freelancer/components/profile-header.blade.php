@@ -3,7 +3,7 @@
             <div class="d-flex align-items-center">
                 <img src="https://i.ibb.co/3mXb0Zx6/image.jpg" class="profile-avatar me-4" alt="Sarah Johnson profile picture">
                 <div>
-                    <h3 class="mb-1 fw-semibold">Sarah Johnson</h3>
+                    <h3 class="mb-1 fw-semibold">{{$profile['username']}}</h3>
                     <div class="text-muted mb-1">@sarah_designs</div>
                     <p class="mb-2" style="max-width:410px;">Passionate UI/UX designer with 5+ years of experience
                         creating beautiful, user-centered digital experiences. I specialize in mobile app design, web
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-outline-secondary btn-sm ms-md-2" style="min-width:120px;">
+            <button class="btn btn-outline-secondary btn-sm ms-md-2" data-bs-toggle="modal" data-bs-target="#profileModal" style="min-width:120px;">
                 <i class="bi bi-pencil-square me-1"></i> Edit Profile
             </button>
         </div>

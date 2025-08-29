@@ -89,7 +89,7 @@
             }
         </style>
         @include('freelancer.components.profile-header')
-
+        @include('freelancer.components.modals.edit-profile')
 
         <div class="tab-content" id="profileTabContent">
             <!-- Overview Tab -->
@@ -99,13 +99,7 @@
                     <div class="col-md-6">
                         <!-- Skills & Expertise -->
                         <div class="profile-section mb-3">
-                            <div class="mb-2 fw-semibold"><i class="bi bi-stars me-2 text-primary"></i>Skills &
-                                Expertise</div>
-                            <span class="badge bg-primary text-white me-1 mb-1">UI/UX Design</span>
-                            <span class="badge bg-primary text-white me-1 mb-1">Figma</span>
-                            <span class="badge bg-primary text-white me-1 mb-1">Adobe Creative Suite</span>
-                            <span class="badge bg-success text-white me-1 mb-1">Prototyping</span>
-                            <span class="badge bg-success text-white me-1 mb-1">Intermediate</span>
+                            @include('freelancer.components.skills')
                         </div>
                         <!-- Contact Information -->
                         <div class="profile-section mb-3">
