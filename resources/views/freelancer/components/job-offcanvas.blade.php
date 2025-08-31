@@ -42,7 +42,7 @@
         <dt class="col-sm-4">Job Type</dt>
         <dd class="col-sm-8">{{ $d['jobType'] }}</dd>
         <dt class="col-sm-4">Minimum Success Score</dt>
-        <dd class="col-sm-8">{{ $d['minimmumSuccessScore'] }}</dd>
+        <dd class="col-sm-8">{{ $d['minimumSuccessScore'] }}</dd>
         <dt class="col-sm-4">Minimum Earning Score</dt>
         <dd class="col-sm-8">{{ $d['minimumEarningScore'] }}</dd>
         <dt class="col-sm-4">Required Talent Type</dt>
