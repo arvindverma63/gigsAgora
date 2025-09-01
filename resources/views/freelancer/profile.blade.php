@@ -92,6 +92,7 @@
         @include('freelancer.components.modals.edit-profile')
 
         <div class="tab-content" id="profileTabContent">
+            @include('components.alert')
             <!-- Overview Tab -->
             <div class="tab-pane fade show active" id="overview" role="tabpanel">
 
@@ -105,7 +106,7 @@
                         <div class="profile-section mb-3">
                             <div class="mb-2 fw-semibold"><i class="bi bi-envelope-at me-2 text-secondary"></i>Contact
                                 Information</div>
-                            <div class="mb-1 text-break"><i class="bi bi-geo-alt me-2"></i>123 Creative Street, New
+                            <div class="mb-1 text-break"><i class="bi bi-geo-alt me-2"></i> 123 Creative Street, New
                                 York, United States 10001</div>
                             <div class="mb-1"><i class="bi bi-telephone me-2"></i>+1 (555) 123-4567</div>
                             <div class="mb-1"><i class="bi bi-envelope me-2"></i><a

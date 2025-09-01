@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request; // ✅ correct import
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -50,42 +50,45 @@ class Profile
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $authData['token'], // adjust if token structure different
             'Accept' => 'application/json',
-        ])->post($baseUrl . 'api/Freelancer/UpdateProfile', $validated);
+        ])->put($baseUrl . 'api/Freelancer/UpdateProfile', $validated);
 
-        return $response->json();
+        return $response;
     }
 
     public function updateSkills(Request $request)
     {
+        // log payload
+        Log::info('request update skill payload : ', $request->all());
+
         $authData = Session::get("auth_data");
         $baseUrl = env('API_BASE_URL');
 
-        // Call API
+        // ✅ Correct: get JSON body as array
+
+        $payload = $request->all();
+
+        // ✅ Send payload to API
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $authData['token'], // adjust if token structure different
+            'Authorization' => 'Bearer ' . $authData['token'],
             'Accept' => 'application/json',
-        ])->post($baseUrl . 'api/Freelancer/UpdateSkills', $request[]);
+        ])->put($baseUrl . 'api/Freelancer/UpdateSkills', $payload);
 
         return $response->json();
     }
 
-    public function skillSuggestions($request)
+
+    public function skillSuggestions(string $keyword)
     {
         $authData = Session::get("auth_data");
         $baseUrl = env('API_BASE_URL');
 
-        // Call API with query param
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $authData['token'],
             'Accept' => '*/*',
-        ])->get($baseUrl . '/api/Common/GetSkills?keyword='.$request);
+        ])->get($baseUrl . 'api/Common/GetSkills?keyword=' . $keyword);
 
-        Log::info('response suggestions', [
-            'suggestions_api_url' => $baseUrl.'api/Common/GetSkills?keyword='.$request,
-            'keyword' => $request,
-            'response' => $response->json()
-        ]);
 
+        Log::info('response : ', ['response ' => $baseUrl . '/api/Common/GetSkills?keyword=' . $keyword]);
         return $response->json();
     }
 

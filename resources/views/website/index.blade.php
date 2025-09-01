@@ -5,15 +5,19 @@
 
 <body class="index-page">
 
-    <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <header id="header" class="header fixed-top bg-black py-2">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
 
+            <!-- Logo Section -->
             <a href="index.html" class="logo d-flex align-items-center">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <img src="{{ asset('website/assets/img/logo-2.png') }}" style="height: 80px;" alt="">
+                <img src="{{ asset('website/assets/img/logo-2.png') }}" style="height: 60px;" alt="Logo">
             </a>
 
+
             @include('website.partials.navbar')
+            <!-- Mobile Toggle Icon -->
+            <i class="mobile-nav-toggle d-lg-none bi bi-list text-white fs-2"></i>
+
         </div>
     </header>
 
@@ -61,7 +65,7 @@
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row align-items-xl-center gy-5">
-                     <img src="{{ asset('website/assets/img/bg-main.png') }}" alt="" class="hero-bg mt-4">
+                    <img src="{{ asset('website/assets/img/bg-main.png') }}" alt="" class="hero-bg mt-4">
 
                 </div>
             </div>

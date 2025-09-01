@@ -75,3 +75,4 @@ Route::get('/AllJobProposals',[FreelancerPageController::class,'allJobProposals'
 
 Route::post('/update/skills',[ProfileController::class,'updateSkills']);
 Route::get('/skills/suggestions/{request}',[ProfileController::class,'skillSuggestions']);
+Route::post('/update/profile',[ProfileController::class,'updateProfile']);
