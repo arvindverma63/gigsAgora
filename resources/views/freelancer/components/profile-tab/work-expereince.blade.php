@@ -44,7 +44,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1da1f2"
                     class="bi bi-briefcase-fill work-icon" viewBox="0 0 16 16">
                     <path
-                        d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3z" />
+                        d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3z"/>
                 </svg>
                 Work Experience
             </h5>
