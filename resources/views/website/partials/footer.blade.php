@@ -1,5 +1,4 @@
-    <footer id="footer" class="footer dark-background">
-
+    <footer id="footer" class="footer dark-background bg-black">
         <div class="container footer-top">
             <div class="row gy-4">
                 <div class="col-lg-4 col-md-6 footer-about">
@@ -53,7 +52,6 @@
                         <div class="sent-message">Your subscription request has been sent. Thank you!</div>
                     </form>
                 </div>
-
             </div>
         </div>
 
@@ -62,11 +60,7 @@
                     Reserved</span>
             </p>
             <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you've purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                Designed by <a href="https://bootstrapmade.com/">BackendCodersIndia pvt limited</a>
             </div>
         </div>
 

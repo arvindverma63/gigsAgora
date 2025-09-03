@@ -63,11 +63,9 @@ class Profile
         $authData = Session::get("auth_data");
         $baseUrl = env('API_BASE_URL');
 
-        // ✅ Correct: get JSON body as array
 
         $payload = $request->all();
 
-        // ✅ Send payload to API
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $authData['token'],
             'Accept' => 'application/json',
