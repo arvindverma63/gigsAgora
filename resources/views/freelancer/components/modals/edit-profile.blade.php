@@ -15,24 +15,12 @@
                             <input type="text" class="form-control" id="fullName" name="fullName"
                                 value="{{ $profile['fullName'] ?? '' }}" placeholder="Enter full name">
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" name="username"
-                                value="{{ $profile['username'] ?? '' }}" placeholder="Enter username">
-                        </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="bio" class="form-label">Bio</label>
                         <textarea class="form-control" id="bio" rows="3" name="bio" placeholder="Tell us about yourself">{{ $profile['bio'] ?? '' }}</textarea>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="profileImageUrl" class="form-label">Profile Image URL</label>
-                        <input type="url" class="form-control" id="profileImageUrl" name="profileImageUrl"
-                            value="{{ $profile['profileImageUrl'] ?? '' }}" placeholder="Enter image URL">
-                    </div>
-
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="address" class="form-label">Address</label>
@@ -64,11 +52,6 @@
                             <label for="phoneNumber" class="form-label">Phone Number</label>
                             <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
                                 value="{{ $profile['phoneNumber'] ?? '' }}" placeholder="Enter phone number">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email"
-                                value="{{ $profile['email'] ?? '' }}" placeholder="Enter email">
                         </div>
                     </div>
 
