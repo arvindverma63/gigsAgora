@@ -26,34 +26,15 @@ class Profile
         $authData = Session::get("auth_data");
         $baseUrl = env('API_BASE_URL');
 
-        // Validate request
-        $validated = $request->validate([
-            'fullName' => 'nullable|string|max:255',
-            'username' => 'nullable|string|max:255',
-            'bio' => 'nullable|string',
-            'profileImageUrl' => 'nullable|string',
-            'address' => 'nullable|string|max:255',
-            'postalCode' => 'nullable|string|max:20',
-            'country' => 'nullable|string|max:100',
-            'city' => 'nullable|string|max:100',
-            'phoneNumber' => 'nullable|string|max:20',
-            'email' => 'nullable|email',
-            'websiteUrl' => 'nullable|url|max:255',
-            'hourlyRate' => 'nullable|numeric|min:0',
-            'experienceLevel' => 'nullable|integer|min:0',
-            'availabilityStatus' => 'nullable|integer|min:0',
-            'languages' => 'nullable|string',
-            'isActive' => 'nullable|boolean',
-        ]);
-
         // Call API
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $authData['token'], // adjust if token structure different
+            'Authorization' => 'Bearer ' . $authData['token'],
             'Accept' => 'application/json',
-        ])->put($baseUrl . 'api/Freelancer/UpdateProfile', $validated);
+        ])->put($baseUrl . 'api/Freelancer/UpdateProfile', $request->all());
 
-        return $response;
+        return $response->json(); // if you want to return to frontend
     }
+
 
     public function updateSkills(Request $request)
     {

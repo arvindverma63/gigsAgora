@@ -20,10 +20,10 @@ class ProfileController extends Controller
     public function updateProfile(Request $request, Profile $profile){
         $response = $profile->updateProfile($request);
         // dd($response);
-        if($response->status() == 200){
+        if($response){
             return redirect()->back()->with(['success'=>'updated Successfully']);
         }else{
-            return redirect()->back()->with(['error'=>$response->json()]);
+            return redirect()->back()->with(['error'=>$response->json()['message']]);
         }
     }
 }
