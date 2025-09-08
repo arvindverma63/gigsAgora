@@ -57,7 +57,7 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="form-step bg-white p-4 rounded shadow-sm" id="step-2">
+                <div class="form-step bg-white p-4 rounded" id="step-2">
                     <h5 class="fw-semibold mb-3">Budget & Milestones</h5>
                     <p class="text-muted">Choose how you'd like to be paid and set your budget for this project.</p>
 
@@ -65,7 +65,7 @@
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Payment Type <span class="text-danger">*</span></label>
                         <div class="list-group">
-                            <label class="list-group-item d-flex align-items-center">
+                            <label class="list-group-item d-flex align-items-center" id="fixedPrice">
                                 <input class="form-check-input me-2" type="radio" name="paymentType" value="fixed"
                                     checked>
                                 <div>
@@ -73,7 +73,7 @@
                                     <small class="text-muted">Set a total project price</small>
                                 </div>
                             </label>
-                            <label class="list-group-item d-flex align-items-center">
+                            <label class="list-group-item d-flex align-items-center" id="milestone">
                                 <input class="form-check-input me-2" type="radio" name="paymentType"
                                     value="milestones">
                                 <div>
@@ -173,6 +173,10 @@
                     const remainingDisplay = document.getElementById('remaining');
                     const milestoneList = document.getElementById('milestoneList');
                     const noMilestones = document.getElementById('noMilestones');
+                    const fixedPrice = document.getElementById("fixedPrice");
+                    const milestone = document.getElementById("milestone");
+
+                    updateCssFixedPrice();
                     let allocated = 0;
 
                     // Toggle Milestone Section
@@ -180,8 +184,10 @@
                         radio.addEventListener('change', () => {
                             if (radio.value === 'milestones' && radio.checked) {
                                 milestoneContainer.classList.remove('d-none');
+                                updateCssMilestone();
                             } else {
                                 milestoneContainer.classList.add('d-none');
+                                updateCssFixedPrice();
                             }
                         });
                     });
@@ -211,11 +217,11 @@
 
                         const row = document.createElement('tr');
                         row.innerHTML = `
-      <td>${title}</td>
-      <td>${desc || '-'}</td>
-      <td>$${amount.toFixed(2)}</td>
-      <td><button class="btn btn-sm btn-danger remove">×</button></td>
-    `;
+                        <td>${title}</td>
+                        <td>${desc || '-'}</td>
+                        <td>$${amount.toFixed(2)}</td>
+                        <td><button class="btn btn-sm btn-danger remove">×</button></td>
+                        `;
                         milestoneList.appendChild(row);
 
                         // Clear inputs
@@ -244,10 +250,24 @@
                         remainingDisplay.classList.toggle('text-danger', remaining < 0);
                         remainingDisplay.classList.toggle('text-success', remaining >= 0);
                     }
+
+                    function updateCssFixedPrice() {
+                        fixedPrice.style.border = "2px solid green";
+                        fixedPrice.style.background = "#eaffdf";
+                        milestone.style.background = "white";
+                        milestone.style.border = "1px solid lightgrey"; // missing 'solid'
+                    }
+
+                    function updateCssMilestone() {
+                        milestone.style.border = "2px solid green";
+                        milestone.style.background = "#eaffdf"; // fixed variable name
+                        fixedPrice.style.background = "white";
+                        fixedPrice.style.border = "1px solid lightgrey"; // missing 'solid'
+                    }
                 </script>
 
                 <!-- Step 3 -->
-                <div class="form-step bg-white p-4 rounded shadow-sm" id="step-3">
+                <div class="form-step bg-white p-4 rounded " id="step-3">
                     <h5 class="fw-semibold mb-3">Proposal Options</h5>
                     <p class="text-muted">Enhance your proposal with these optional features to increase your chances
                         of being hired.</p>
