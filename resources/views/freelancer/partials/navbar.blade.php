@@ -197,7 +197,7 @@
 
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-2"
                     aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item py-2" href="#"><i class="bi bi-person me-2"></i> Profile</a>
+                    <li><a class="dropdown-item py-2" href="/freelancer/profile"><i class="bi bi-person me-2"></i> Profile</a>
                     </li>
                     <li><a class="dropdown-item py-2" href="#"><i class="bi bi-gear me-2"></i> Settings</a>
                     </li>

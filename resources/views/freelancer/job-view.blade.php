@@ -258,7 +258,7 @@
                         <!-- Sponsored Proposal -->
                         <label class="list-group-item d-flex justify-content-between align-items-center option-card">
                             <div class="d-flex align-items-start">
-                                <span class="me-3 fs-5 text-warning">🏆</span>
+                                <span class="me-3 fs-5 text-warning"><i class="fa-solid fa-trophy"></i></span>
                                 <div>
                                     <div class="fw-semibold">Sponsored Proposal
                                         <span class="badge bg-success ms-1">Premium</span>
@@ -277,7 +277,7 @@
                         <!-- Highlight Proposal -->
                         <label class="list-group-item d-flex justify-content-between align-items-center option-card">
                             <div class="d-flex align-items-start">
-                                <span class="me-3 fs-5 text-danger">⭐</span>
+                                <span class="me-3 fs-5 text-danger"><i class="fa-solid fa-star"></i></span>
                                 <div>
                                     <div class="fw-semibold">Highlight Proposal
                                         <span class="badge bg-warning text-dark ms-1">Popular</span>
@@ -296,7 +296,7 @@
                         <!-- Featured Proposal -->
                         <label class="list-group-item d-flex justify-content-between align-items-center option-card">
                             <div class="d-flex align-items-start">
-                                <span class="me-3 fs-5 text-primary">📌</span>
+                                <span class="me-3 fs-5 text-primary"><i class="fa-solid fa-location-pin"></i></span>
                                 <div>
                                     <div class="fw-semibold">Featured Proposal
                                         <span class="badge bg-info text-dark ms-1">Featured</span>
@@ -315,7 +315,7 @@
                         <!-- Sealed Proposal -->
                         <label class="list-group-item d-flex justify-content-between align-items-center option-card">
                             <div class="d-flex align-items-start">
-                                <span class="me-3 fs-5 text-success">🔒</span>
+                                <span class="me-3 fs-5 text-success"><i class="fa-solid fa-location-pin"></i></span>
                                 <div>
                                     <div class="fw-semibold">Sealed Proposal
                                         <span class="badge bg-secondary ms-1">Private</span>
